@@ -6,7 +6,7 @@ session_start();
 
     $correo = $_POST['correo'];
     $contrasena = $_POST['contrasena'];
-    $contrasena = hash('sha512', $contrasena);
+    // cifrado $contrasena = hash('sha512', $contrasena);.
 
 
     $validar_login = mysqli_query($conexion, "SELECT * FROM usuarios WHERE correo= '$correo'
@@ -19,10 +19,9 @@ session_start();
     }else{
         echo'
         <script>
-            alert("El usuario no existe, por favor verifique los datos introducidos");
-            Window.location = "../index.php;
-            </script>
-        ';
+            alert("El usuario no existe, por favor verifique los datos introducidos");</script>';
+            header ("location: ../index.php");
+
         exit;
     }
 

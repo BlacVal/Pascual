@@ -44,13 +44,14 @@ if(isset($_SESSION['usuario'])){
                         <input type="password" placeholder="Contraseña" name="contrasena">
                         <button>Entrar</button>
                     </form>
-                    
                     <form action="php/registro_usuario_be.php" method="POST" class="formulario__register">
                         <h2>Regístrarse</h2>
                         <input type="text" placeholder="Nombre completo" name="nombre_completo">
                         <input type="text" placeholder="Correo Electronico" name="correo">
+                        <input type="text" placeholder="Cédula" name="cedula"> <!-- Nuevo campo para la cédula -->
                         <input type="text" placeholder="Usuario" name="usuario">
                         <input type="password" placeholder="Contraseña" name="contrasena">
+                        <input type="password" placeholder="Confirmar Contraseña" name="confirmar_contrasena"> <!-- Nuevo campo para confirmar la contraseña -->
                         <button>Regístrarse</button>
                     </form>
                 </div>
