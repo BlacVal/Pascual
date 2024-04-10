@@ -51,7 +51,6 @@ if(isset($_SESSION['usuario'])){
                         <input type="text" placeholder="Cédula" name="cedula"> <!-- Nuevo campo para la cédula -->
                         <input type="text" placeholder="Usuario" name="usuario">
                         <input type="password" placeholder="Contraseña" name="contrasena">
-                        <input type="password" placeholder="Confirmar Contraseña" name="confirmar_contrasena"> <!-- Nuevo campo para confirmar la contraseña -->
                         <button>Regístrarse</button>
                     </form>
                 </div>

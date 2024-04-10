@@ -34,18 +34,6 @@ $query = "INSERT INTO usuarios(nombre_completo, correo, cedula, usuario, contras
                       header("location: ../index.php");
                       exit();
                     }
-                    //verificar si las contraseñas son iguales
-                    $verificar_contrasena=mysqli_query($conexion, "SELECT * FROM contrasena WHERE contrasena='$contrasena'");
-                    
-                    if (mysqli_num_rows($verificar_contrasena)>0) {
-                      echo '
-                      <script>
-                      alert("Las contrasenas no coinciden");</script>';
-                      header("location: ../index.php");
-
-                      exit();
-
-                    }
           $ejecutar = mysqli_query ($conexion, $query);
 
           if($ejecutar){
