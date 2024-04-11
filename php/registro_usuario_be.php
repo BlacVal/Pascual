@@ -5,48 +5,47 @@ include 'conexion_be.php';
 $nombre_completo = $_POST['nombre_completo'];
 $correo = $_POST['correo'];
 $cedula = $_POST['cedula'];
-$usuario = $_POST ['usuario'];
-$contrasena = $_POST ['contrasena'];
-//Cifrado de contraseña con el algoritmo sha512 $contrasena = hash('sha512', $contrasena); .
+$usuario = $_POST['usuario'];
+$contrasena = $_POST['contrasena'];
 
-$query = "INSERT INTO usuarios(nombre_completo, correo, cedula, usuario, contrasena) 
-          VALUES('$nombre_completo', '$correo', '$cedula', '$usuario', '$contrasena')";
-          
-          //verificar que el correo no se repita en la base de datos.
-          $verificar_correo = mysqli_query($conexion, "SELECT * FROM usuarios  WHERE correo='$correo'");
+// Verificar si la cédula o tarjeta de identidad ya está registrada en la base de datos
+$verificar_cedula = mysqli_query($conexion, "SELECT * FROM usuarios WHERE cedula='$cedula'");
+if(mysqli_num_rows($verificar_cedula) > 0) {
+    $registro_exitoso = false;
+    $mensaje = "Esta cedula ya esta registrada, por favor intente con otra.";
+}
 
-          if(mysqli_num_rows($verificar_correo)>0) {
-            echo '
-            <script>
-            alert("El correo se registro correctamente");</script>';
-            header("location: ../index.php");
-            exit();
-            mysqli_close($conexion);
-          }
+// Verificar si el correo ya está registrado en la base de datos
+$verificar_correo = mysqli_query($conexion, "SELECT * FROM usuarios WHERE correo='$correo'");
+if(mysqli_num_rows($verificar_correo) > 0) {
+    $registro_exitoso = false;
+    $mensaje = "Este correo ya esta registrado, por favor intente con otro.";
+}
 
-                    //verificar que el nombre de usuario no se repita en la base de datos.
-                    $verificar_usuario = mysqli_query($conexion, "SELECT * FROM usuarios  WHERE correo='$usuario'");
+// Verificar si el nombre de usuario ya está registrado en la base de datos
+$verificar_usuario = mysqli_query($conexion, "SELECT * FROM usuarios WHERE usuario='$usuario'");
+if(mysqli_num_rows($verificar_usuario) > 0) {
+    $registro_exitoso = false;
+    $mensaje = "Este usuario ya esta registrado, por favor intente con otro.";
+}
 
-                    if(mysqli_num_rows($verificar_usuario)>0) {
-                      echo '
-                      <script>
-                      alert("este correo ya esta registrado,intente con otro diferente");</script>';
-                      header("location: ../index.php");
-                      exit();
-                    }
-          $ejecutar = mysqli_query ($conexion, $query);
+// Si no hay registros previos con la cédula, el correo y el nombre de usuario, proceder con el registro
+if (!isset($registro_exitoso)) {
+    $query = "INSERT INTO usuarios(nombre_completo, correo, cedula, usuario, contrasena) 
+              VALUES('$nombre_completo', '$correo', '$cedula', '$usuario', '$contrasena')";
+    
+    $ejecutar = mysqli_query($conexion, $query);
 
-          if($ejecutar){
-            echo '
-            <script>
-             alert ("Usuario almacenado exitosamente");</script>';
-             header ("location: ../index.php");
-          }else{
-            echo'
-            <script>
-             alert ("Intentelo de nuevo, usuario no almacenado");</script>';
-             header ("location: ../index.php");
-          }
+    if($ejecutar) {
+        $registro_exitoso = true;
+        $mensaje = "Usuario almacenado exitosamente.";
+    } else {
+        $registro_exitoso = false;
+        $mensaje = "Ha ocurrido un error, por favor intentelo de nuevo.";
+    }
+}
 
-          mysqli_close($conexion);
+echo json_encode(array("registro_exitoso" => $registro_exitoso, "mensaje" => $mensaje));
+
+mysqli_close($conexion);
 ?>

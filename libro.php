@@ -10,7 +10,13 @@
 </head>
 <body>
    
-    <nav class="menu">  
+    <nav class="menu">
+        <ul>
+            <li><a href="./inicio.php">Inicio</a></li>
+            <li><a href="#">Servicios</a></li>
+            <li><a href="./libro.php">Productos</a></li>
+            <li><a href="#">Contactos</a></li>
+        </ul>
         <ul>
             <li>
                 <div class="categorias">
