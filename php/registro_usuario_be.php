@@ -45,7 +45,7 @@ if (!isset($registro_exitoso)) {
     }
 }
 
-echo json_encode(array("registro_exitoso" => $registro_exitoso, "mensaje" => $mensaje));
+echo json_encode(array("" => $registro_exitoso, "" => $mensaje));
 
 mysqli_close($conexion);
 ?>
