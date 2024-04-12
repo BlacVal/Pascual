@@ -153,6 +153,7 @@ body{
     background-size: cover;
     height: 450px;
     padding: 170px 55px;
+    flex-basis: calc(25% - 20px);
 
 }
 
@@ -163,6 +164,7 @@ body{
     background-size: cover;
     height: 450px;
     padding: 170px 55px;
+    flex-basis: calc(25% - 20px);
 
 }
 
@@ -173,6 +175,17 @@ body{
     background-size: cover;
     height: 450px;
     padding: 170px 55px;
+    flex-basis: calc(25% - 20px);
+
+}
+.general-7 {
+    background-image: url(images/r6.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 450px;
+    padding: 170px 55px;
+    flex-basis: calc(25% - 20px);
 
 }
 

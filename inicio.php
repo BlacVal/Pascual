@@ -41,7 +41,7 @@ if(isset($_SESSION['usuario'])){
         <div class="header-content container">
 
             <div class="header-txt">
-                <h1>Everest</h1>
+                <h1>Library loan Control</h1>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae magni nulla praesentium, accusamus voluptatibus ullam voluptatem odit nobis ex sit eos, consequatur debitis perferendis repellat quo perspiciatis architecto odio necessitatibus.
                 </p>
                 <a href="#" class="btn-1">Información</a>
@@ -56,19 +56,19 @@ if(isset($_SESSION['usuario'])){
         <div class="general-content">
 
             <div class="general-1 txt">
-                <h3>Programa 1</h3>
+                <h3>¿Porque una bilbioteca virtual?</h3>
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam vero libero, molestiae ducimus ut error rem quia. Voluptates, pariatur officiis! Consequuntur nemo natus ullam eligendi expedita tempora laboriosam vitae quam?
                 </p>
             </div>
             <div class="general-2 txt">
-                <h3>Programa 2</h3>
+                <h3>¿Porque se creo la bibliteca virtual?</h3>
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam vero libero, molestiae ducimus ut error rem quia. Voluptates, pariatur officiis! Consequuntur nemo natus ullam eligendi expedita tempora laboriosam vitae quam?
                 </p>
             </div>
             <div class="general-3 txt">
-                <h3>Programa 3</h3>
+                <h3>Con que fin</h3>
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam vero libero, molestiae ducimus ut error rem quia. Voluptates, pariatur officiis! Consequuntur nemo natus ullam eligendi expedita tempora laboriosam vitae quam?
                 </p>
@@ -126,19 +126,25 @@ if(isset($_SESSION['usuario'])){
             <div class="general-content">
     
                 <div class="general-4 txt">
-                    <h3>Programa 4</h3>
+                    <h3>Juan Manuel Ciro Vega</h3>
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam vero libero, molestiae ducimus ut error rem quia. Voluptates, pariatur officiis! Consequuntur nemo natus ullam eligendi expedita tempora laboriosam vitae quam?
                     </p>
                 </div>
                 <div class="general-5 txt">
-                    <h3>Programa 5</h3>
+                    <h3>Alexandra Rodriguez Agudelo</h3>
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam vero libero, molestiae ducimus ut error rem quia. Voluptates, pariatur officiis! Consequuntur nemo natus ullam eligendi expedita tempora laboriosam vitae quam?
                     </p>
                 </div>
                 <div class="general-6 txt">
-                    <h3>Programa 6</h3>
+                    <h3>Samuel Brand Gaviria</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam vero libero, molestiae ducimus ut error rem quia. Voluptates, pariatur officiis! Consequuntur nemo natus ullam eligendi expedita tempora laboriosam vitae quam?
+                    </p>
+                </div>
+                <div class="general-7 txt">
+                    <h3>Juan Pablo Montoya Restrepo</h3>
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam vero libero, molestiae ducimus ut error rem quia. Voluptates, pariatur officiis! Consequuntur nemo natus ullam eligendi expedita tempora laboriosam vitae quam?
                     </p>

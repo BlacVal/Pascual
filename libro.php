@@ -57,6 +57,7 @@
                             <h2>Matematicas 9°</h2> 
                             <button onclick="agregarAlCarrito('Libro')">Agregar al Carrito</button>
                         </div>
+                        <br>
                         <script src="./libro.js"></script>
                         <div class="book">
                             <img src="materias/m4.jpg" alt="Portada del Libro 1">
@@ -97,10 +98,10 @@
                         <!-- Aquí se mostrarán los productos agregados al carrito -->
                       </ul>
                     </div>
-                                <div class="categoria-español"><summary>ESPAÑOL</summary></div>
+                                <div class="categoria-Programacion"><summary>Programacion</summary></div>
                                 <div class="book">
                                     <img src="materias/e1.jpg" alt="Portada del Libro 1">
-                                    <h2>Español 6°</h2> 
+                                    <h2>BASICA 1</h2> 
                                     <button onclick="agregarAlCarrito('Libro')">Agregar al Carrito</button>
                                 </div>
                                 <script src="./libro.js"></script>
@@ -108,7 +109,7 @@
         
                                 <div class="book">
                                     <img src="materias/e2.jpg" alt="Portada del Libro 1">
-                                    <h2>Español 7°</h2> 
+                                    <h2>BASICA 2</h2> 
                                     <button onclick="agregarAlCarrito('Libro')">Agregar al Carrito</button>
                                 </div>
                                 <script src="./libro.js"></script>
@@ -116,29 +117,30 @@
         
                                 <div class="book">
                                     <img src="materias/e3.png" alt="Portada del Libro 1">
-                                    <h2>Español 8°</h2>
+                                    <h2>BASICA 3</h2>
                                     <button onclick="agregarAlCarrito('Libro')">Agregar al Carrito</button>
                                 </div>
+                                <br>
                                 <script src="./libro.js"></script>
                                 </div>
         
                                 <div class="book">
                                     <img src="materias/e4.png" alt="Portada del Libro 1">
-                                    <h2>Español 9°</h2>
+                                    <h2>INTERMEDIO 1</h2>
                                     <button onclick="agregarAlCarrito('Libro')">Agregar al Carrito</button>
                                 </div>
                                 <script src="./libro.js"></script>
                                 </div>
                                 <div class="book">
                                     <img src="materias/e5.jpg" alt="Portada del Libro 1">
-                                    <h2>Español 10°</h2>
+                                    <h2>INTERMEDIO 2</h2>
                                     <button onclick="agregarAlCarrito('Libro')">Agregar al Carrito</button>
                                 </div>
                                 <script src="./libro.js"></script>
                                 </div>
                                 <div class="book">
                                     <img src="materias/e6.webp" alt="Portada del Libro 1">
-                                    <h2>Español 11°</h2>
+                                    <h2>INTERMEDIO 3</h2>
                                     <button onclick="agregarAlCarrito('Libro')">Agregar al Carrito</button>
                                       </div>
                                       <script src="./libro.js"></script>
@@ -146,68 +148,6 @@
                        
                         </div>
                     </li>
-                    <li>
-                        <div class="container">
-                           
-                            <img src="./images/carrito.png" alt="Carrito de Compras" class="cart-icon" onclick="mostrarCarrito()">
-              
-                            <div id="cart-modal">
-                                 <span class="cerrar" onclick="cerrarCarrito()">Cerrar</span>
-                              <h2>Carrito de Compras</h2>
-                            </div>
-                              <ul id="lista-compras"> 
-                               
-                                <!-- Aquí se mostrarán los productos agregados al carrito -->
-                              </ul>
-                            </div>
-                                <div class="categoria-sociales"><summary>SOCIALES</summary></div>
-                                <div class="book">
-                                    <img src="materias/s1.png" alt="Portada del Libro 1">
-                                    <h2>Sociales 6°</h2> 
-                                    <button onclick="agregarAlCarrito('Libro')">Agregar al Carrito</button>
-                                      </div>
-                                      <script src="./libro.js"></script>
-                                </div>
-        
-                                <div class="book">
-                                    <img src="materias/s2.png" alt="Portada del Libro 1">
-                                    <h2>Sociales 7°</h2>
-                                    <button onclick="agregarAlCarrito('Libro')">Agregar al Carrito</button>
-                                </div>
-                                <script src="./libro.js"></script>
-                                </div>
-        
-                                <div class="book">
-                                    <img src="materias/s3.webp" alt="Portada del Libro 1">
-                                    <h2>Sociales 8°</h2>
-                                    <button onclick="agregarAlCarrito('Libro')">Agregar al Carrito</button>
-                                </div>
-                                <script src="./libro.js"></script>
-                                </div>
-        
-                                <div class="book">
-                                    <img src="materias/s4.jpg" alt="Portada del Libro 1">
-                                    <h2>Sociales 9°</h2>> 
-                                    <button onclick="agregarAlCarrito('Libro')">Agregar al Carrito</button>
-                                      </div>
-                                      <script src="./libro.js"></script>
-                                </div>
-                                <div class="book">
-                                    <img src="materias/s5.jpg" alt="Portada del Libro 1">
-                                    <h2>Sociales 10°</h2>
-                                    <button onclick="agregarAlCarrito('Libro')">Agregar al Carrito</button>
-                                </div>
-                                <script src="./libro.js"></script>
-                                </div>
-                                <div class="book">
-                                    <img src="materias/m6.jpg" alt="Portada del Libro 1">
-                                    <h2>Sociales 11°</h2>
-                                    <button onclick="agregarAlCarrito('Libro')">Agregar al Carrito</button>
-                                      </div>
-                                      <script src="./libro.js"></script>
-                                    </div>
-                                </li>
-                             </ul>
                             </nav>
                         </body>
                         </html>
