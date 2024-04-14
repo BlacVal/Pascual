@@ -17,137 +17,41 @@
             <li><a href="./libro.php">Productos</a></li>
             <li><a href="#">Contactos</a></li>
         </ul>
+        <section class="libros-disponibles">
+        <h2>Libros</h2>
+        <div class="lista-libros">
+            <details>
+                <summary>Matemáticas</summary>
+                <ul>
+                <li><a href="./libros/Matematicas10.pdf">Matemáticas 10°</a></li>
+                    <li>Matemáticas 11°</li>
+                    <!-- Agrega más libros si es necesario -->
+                </ul>
+            </details>
+            <details>
+                <summary>Programación</summary>
+                <ul>
+                    <li>BASICA 1</li>
+                    <li>BASICA 2</li>
+                    <li>BASICA 3</li>
+                    <!-- Agrega más libros si es necesario -->
+                </ul>
+            </details>
+            <!-- Agrega más categorías de libros si es necesario -->
+        </div>
+    </section>
+    <section class="libros-disponibles">
+        <h2>Libros Disponibles para Descargar</h2>
         <ul>
-            <li>
-                <div class="categorias">
-                <div class="container">
-                    <img src="./images/carrito.png" alt="Carrito de Compras" class="cart-icon" onclick="mostrarCarrito()">
-              
-                    <div id="cart-modal">
-                        <span id="cerrar" onclick="cerrarCarrito()">Cerrar</span>
-                      <h2>Carrito de Compras</h2>
-                    </div>
-                      <ul id="lista-compras"> 
-                        
-                        <!-- Aquí se mostrarán los productos agregados al carrito -->
-                      </ul>
-                      
-                    </div>
-                        <div class="categoria-mate"><summary>MATEMATICAS</summary></div>
-                        <script src="./libro.js"></script>
-                    </div>
-
-                        <div class="book">
-                            <img src="materias/m1.jpg" alt="Portada del Libro 1">
-                            <h2>Matematicas 6°</h2> 
-                            <button onclick="agregarAlCarrito('Libro')">Agregar al Carrito</button>
-                        </div>
-                        <script src="./libro.js"></script>
-                        </div>
-                        <div class="book">
-                            <img src="materias/m2.jpg" alt="Portada del Libro 1">
-                            <h2>Matematicas 7°</h2> 
-                            <button onclick="agregarAlCarrito('Libro')">Agregar al Carrito</button>
-                       </div>
-                        <script src="./libro.js"></script>
-                        </div>
-
-                        <div class="book">
-                            <img src="materias/m3.jpg" alt="Portada del Libro 1">
-                            <h2>Matematicas 9°</h2> 
-                            <button onclick="agregarAlCarrito('Libro')">Agregar al Carrito</button>
-                        </div>
-                        <br>
-                        <script src="./libro.js"></script>
-                        <div class="book">
-                            <img src="materias/m4.jpg" alt="Portada del Libro 1">
-                            <h2>Matematicas 9°</h2> 
-                            <button onclick="agregarAlCarrito('Libro')">Agregar al Carrito</button>
-                       
-                        <script src="./libro.js"></script>
-                    </div>
-                    <div class="book">
-                            <img src="materias/m5.jpg" alt="Portada del Libro 1">
-                            <h2>Matematicas 10°</h2> 
-                            <button onclick="agregarAlCarrito('Libro')">Agregar al Carrito</button>
-                       
-                        <script src="./libro.js"></script>
-                        </div>
-
-                        <div class="book">
-                            <img src="materias/m6.jpg" alt="Portada del Libro 1">
-                            <h2>Matematicas 11°</h2> 
-                            <button onclick="agregarAlCarrito('Libro')">Agregar al Carrito</button>
-                        
-                        <script src="./libro.js"></script>
-                        </div>
-                      
-                        </div>
-                    </li>
-                    <li>
-                        <div class="container">
-                            
-                                <img src="./images/carrito.png" alt="Carrito de Compras" class="cart-icon" onclick="mostrarCarrito()">
-              
-                    <div id="cart-modal">
-                         <span class="cerrar" onclick="cerrarCarrito()">Cerrar</span>
-                      <h2>Carrito de Compras</h2>
-                    </div>
-                      <ul id="lista-compras"> 
-                       
-                        <!-- Aquí se mostrarán los productos agregados al carrito -->
-                      </ul>
-                    </div>
-                                <div class="categoria-Programacion"><summary>Programacion</summary></div>
-                                <div class="book">
-                                    <img src="materias/e1.jpg" alt="Portada del Libro 1">
-                                    <h2>BASICA 1</h2> 
-                                    <button onclick="agregarAlCarrito('Libro')">Agregar al Carrito</button>
-                                </div>
-                                <script src="./libro.js"></script>
-                                </div>
-        
-                                <div class="book">
-                                    <img src="materias/e2.jpg" alt="Portada del Libro 1">
-                                    <h2>BASICA 2</h2> 
-                                    <button onclick="agregarAlCarrito('Libro')">Agregar al Carrito</button>
-                                </div>
-                                <script src="./libro.js"></script>
-                                </div>
-        
-                                <div class="book">
-                                    <img src="materias/e3.png" alt="Portada del Libro 1">
-                                    <h2>BASICA 3</h2>
-                                    <button onclick="agregarAlCarrito('Libro')">Agregar al Carrito</button>
-                                </div>
-                                <br>
-                                <script src="./libro.js"></script>
-                                </div>
-        
-                                <div class="book">
-                                    <img src="materias/e4.png" alt="Portada del Libro 1">
-                                    <h2>INTERMEDIO 1</h2>
-                                    <button onclick="agregarAlCarrito('Libro')">Agregar al Carrito</button>
-                                </div>
-                                <script src="./libro.js"></script>
-                                </div>
-                                <div class="book">
-                                    <img src="materias/e5.jpg" alt="Portada del Libro 1">
-                                    <h2>INTERMEDIO 2</h2>
-                                    <button onclick="agregarAlCarrito('Libro')">Agregar al Carrito</button>
-                                </div>
-                                <script src="./libro.js"></script>
-                                </div>
-                                <div class="book">
-                                    <img src="materias/e6.webp" alt="Portada del Libro 1">
-                                    <h2>INTERMEDIO 3</h2>
-                                    <button onclick="agregarAlCarrito('Libro')">Agregar al Carrito</button>
-                                      </div>
-                                      <script src="./libro.js"></script>
-                                </div>
-                       
-                        </div>
-                    </li>
-                            </nav>
-                        </body>
-                        </html>
+        <li><a href="./libros/Matematicas10.pdf">Matemáticas 10°</a></li>
+        <li><a href="#">Matemáticas 11°</a></li>
+        <li><a href="#">Programación 10°</a></li>
+        <li><a href="#">Programación 11°</a></li>
+        <!-- Agrega más libros con sus respectivos enlaces -->
+    </ul>
+    </section>
+    
+    <script src="./libro.js"></script>
+            </nav>
+        </body>
+    </html>

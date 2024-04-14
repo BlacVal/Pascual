@@ -20,29 +20,31 @@ body {
     float: right;
     font-weight: bold;
     font-size: 20px;
-  }
-  .carrito {
+}
+
+.carrito {
     width: 50px;
     height: 50px;
     cursor: pointer;
-  }
+}
 
-  .cart-modal {
+.cart-modal {
     display: none;
     position: fixed;
-   
     transform: translate(-50%, -50%);
     background: #fff;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     z-index: 9999;
-  }
+}
+
 .cart-icon {
     width: 50px;
     height: 50px;
     cursor: pointer;
-  }
-  #cart-modal {
+}
+
+#cart-modal {
     display: none;
     position: fixed;
     top: 50%;
@@ -53,6 +55,7 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     z-index: 9999;
 }
+
 /* Añadir estilos para los botones */
 button {
     background-color: #512da8;
@@ -92,6 +95,7 @@ summary {
     padding: 20px 0;
     cursor: pointer;
 }
+
 summary:hover {
     background-color: #ccc;
 }
@@ -127,19 +131,13 @@ summary:hover {
 .menu {
     background-color: #9ab0f7;
     background: linear-gradient(to right, #e2e2e2, #c9d6ff);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    margin: 0;
-    padding: 0;
-    background-color: #fff;
     border-radius: 30px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
     color: #333;
     text-align: center;
     padding: 20px 0;
 }
+
 .menu ul {
     list-style: none;
     padding: 0;
@@ -162,16 +160,38 @@ summary:hover {
 .menu ul li a:hover {
     color: #512da8;
 }
-.ca
-/* Contenedor de libros */
-.container {
-    max-width: 800px;
+
+.libros-disponibles {
+    background-color: #9ab0f7;
+    background: linear-gradient(to right, #e2e2e2, #c9d6ff);
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     margin: 20px auto;
     padding: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
     max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
+}
+
+.libros-disponibles h2 {
+    color: #009933;
+    margin-bottom: 20px;
+}
+
+.libros-disponibles ul {
+    list-style: none;
+    padding: 0;
+}
+
+.libros-disponibles ul li {
+    margin-bottom: 10px;
+}
+
+.libros-disponibles ul li a {
+    color: #333;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+.libros-disponibles ul li a:hover {
+    color: #512da8;
 }
