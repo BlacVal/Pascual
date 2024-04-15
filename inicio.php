@@ -44,7 +44,6 @@ if(isset($_SESSION['usuario'])){
                 <h1>Library loan Control</h1>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae magni nulla praesentium, accusamus voluptatibus ullam voluptatem odit nobis ex sit eos, consequatur debitis perferendis repellat quo perspiciatis architecto odio necessitatibus.
                 </p>
-                <a href="#" class="btn-1">Información</a>
             </div>
 
         </div>
@@ -127,27 +126,15 @@ if(isset($_SESSION['usuario'])){
     
                 <div class="general-4 txt">
                     <h3>Juan Manuel Ciro Vega</h3>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam vero libero, molestiae ducimus ut error rem quia. Voluptates, pariatur officiis! Consequuntur nemo natus ullam eligendi expedita tempora laboriosam vitae quam?
-                    </p>
                 </div>
                 <div class="general-5 txt">
                     <h3>Alexandra Rodriguez Agudelo</h3>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam vero libero, molestiae ducimus ut error rem quia. Voluptates, pariatur officiis! Consequuntur nemo natus ullam eligendi expedita tempora laboriosam vitae quam?
-                    </p>
                 </div>
                 <div class="general-6 txt">
                     <h3>Samuel Brand Gaviria</h3>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam vero libero, molestiae ducimus ut error rem quia. Voluptates, pariatur officiis! Consequuntur nemo natus ullam eligendi expedita tempora laboriosam vitae quam?
-                    </p>
                 </div>
                 <div class="general-7 txt">
                     <h3>Juan Pablo Montoya Restrepo</h3>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam vero libero, molestiae ducimus ut error rem quia. Voluptates, pariatur officiis! Consequuntur nemo natus ullam eligendi expedita tempora laboriosam vitae quam?
-                    </p>
                 </div>
             </div>
             </section>
