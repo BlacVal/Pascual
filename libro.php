@@ -24,16 +24,18 @@
                 <summary>Matemáticas</summary>
                 <ul>
                 <li><a href="./libros/Matematicas10.pdf">Matemáticas 10°</a></li>
-                    <li>Matemáticas 11°</li>
+                    <li> <a href="#">Matemáticas 11°</a></li>
                     <!-- Agrega más libros si es necesario -->
                 </ul>
             </details>
             <details>
                 <summary>Programación</summary>
                 <ul>
-                    <li>BASICA 1</li>
-                    <li>BASICA 2</li>
-                    <li>BASICA 3</li>
+                    <li><a href="./libros/HTML Y CSS.pdf">HTML Y CSS</a></li>
+                    <li><a href="#">JavaScript</a></li><br>
+                    <li><a href="#">Diseño</a></li>
+                    <li><a href="#">Base de datos</a></li>
+                    <li><a href="#">Servicio de backend</a></li>
                     <!-- Agrega más libros si es necesario -->
                 </ul>
             </details>
@@ -45,7 +47,7 @@
         <ul>
         <li><a href="./libros/Matematicas10.pdf">Matemáticas 10°</a></li>
         <li><a href="#">Matemáticas 11°</a></li>
-        <li><a href="#">Programación 10°</a></li>
+        <li><a href="./libros/HTML Y CSS.pdf">Programación 10°<br>(HTML Y CSS)</a></li>
         <li><a href="#">Programación 11°</a></li>
         <!-- Agrega más libros con sus respectivos enlaces -->
     </ul>

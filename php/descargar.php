@@ -14,6 +14,11 @@ switch ($libro) {
         $contenido = 'Contenido del libro de Matemáticas 11°...';
         $archivo = "./libros/Matematicas11.pdf";
         break;
+        case 'matematicas11':
+            $titulo = 'Matemáticas 11°';
+            $contenido = 'Contenido del libro de Matemáticas 11°...';
+            $archivo = "./libros/HTML Y CSS.PDF";
+            break;
     // Agrega más casos según sea necesario
 }
 

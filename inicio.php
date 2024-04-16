@@ -142,7 +142,7 @@ if(isset($_SESSION['usuario'])){
 
             <section class="info-2">
                 <div class="info-content container">
-                    <h2>Tesimonios</h2>
+                    <h2>Testimonios</h2>
                     <div class="testi">
 
                         <div class="testi-left">
