@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2? family= Poppins:wght@400;500;600;700;800 & display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
 
 * {
     margin: 0;
@@ -39,11 +39,15 @@ body{
 }
 
 .logo {
-
     color: #fffdfc;
     font-size: 25px;
     font-weight: 800;
+}
 
+.menu .navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 
 .menu .navbar ul li {
@@ -51,7 +55,7 @@ body{
     float: left;
 }
 
-.menu .navbar ul li a{
+.menu .navbar ul li a {
     font-size: 18px;
     padding: 20px;
     color: #fffdfc;
@@ -468,5 +472,52 @@ h2 {
         margin-top: 30px;
     }
 
+}
 
+/* Estilo para mostrar "Productos" al hacer hover sobre "Servicios" */
+.menu .navbar ul ul {
+    display: none;
+    position: absolute;
+    background-color: transparent;
+    padding: 10px;
+    z-index: 1000; /* Asegúrate de que el submenu esté por encima del resto del contenido */
+}
+
+.menu .navbar ul li.servicios:hover ul {
+    display: block; /* Mostrar el submenú de "Servicios" al hacer hover */
+}
+
+/* Ajustes para ocultar "Productos" inicialmente */
+.menu .navbar ul ul li:first-child {
+    display: block; /* Ocultar el primer elemento del submenú */
+}
+/* Agrega estos estilos al final de tu archivo CSS */
+
+.navbar ul li {
+    position: relative;
+    float: left;
+    margin-right: 20px; /* Ajusta el espacio entre elementos del menú */
+}
+
+.navbar ul li:last-child {
+    margin-right: 0; /* Elimina el espacio a la derecha del último elemento */
+}
+
+/* Estilos para el submenú */
+.navbar ul ul {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    display: none;
+    background-color: #1b293a; /* Cambia el color de fondo del submenú si lo deseas */
+    padding: 10px;
+}
+
+.navbar ul ul li {
+    width: 100%; /* Ajusta el ancho del submenú */
+    margin: 5px 0; /* Ajusta el espacio entre elementos del submenú */
+}
+
+.navbar ul li:hover ul {
+    display: block; /* Muestra el submenú al hacer hover */
 }

@@ -1,9 +1,8 @@
-<!-- inicio.php -->
 <?php 
 session_start();
 
 if(isset($_SESSION['usuario'])){
-    echo '<a href="/php/logout.php">Cerrar sesión</a>';
+    echo '<a href="/php/logout.php"></a>';
 }
 ?>
 <!DOCTYPE html>
@@ -19,24 +18,39 @@ if(isset($_SESSION['usuario'])){
 <body>
 
 
-    <header class="header">
+<header class="header">
 
-        <div class="menu container">
-            <a href="a" class="logo"></a>
-            <input type="checkbox" id="menu">
-            <label for="menu">
-                <img src="images/menu.png" class="menu-icono" alt="">
-            </label>
-            <nav class="navbar">
-                <ul>
-                    <li><a href="#">Inicio</a></li>
-                    <li><a href="#">Servicios</a></li>
-                    <li><a href="./libro.php">Productos</a></li>
-                    <li><a href="#">Contactos</a></li>
+<div class="menu container">
+<a href="#" class="logo">Logo</a>
+<input type="checkbox" id="menu">
+<label for="menu">
+    <img src="images/menu.png" class="menu-icono" alt="Menú">
+</label>
+
+<nav class="navbar">
+    <ul>
+        <!-- Opciones del menú principal -->
+        <li><a href="#">Inicio</a></li>
+        <li class="servicios">
+            <a href="#">Servicios</a>
+            <ul class="submenu">
+                <li><a href="./libro.php">Libros</a></li>
+            </ul>
+        </li>
+        <li><a href="#">Contactos</a></li>
+
+        <!-- Opción de ver perfil (si el usuario está autenticado) -->
+        <?php if(isset($_SESSION['usuario'])):?>
+            <li>
+                <a href="/php/perfil.php">Ver tu perfil</a>
+                <ul class="submenu">
+                    <li><a href="/php/logout.php">Cerrar sesión</a></li>
                 </ul>
-            </nav>
-
-        </div>
+            </li>
+        <?php endif;?>
+    </ul>
+</nav>
+</div>
 
         <div class="header-content container">
 
