@@ -139,7 +139,7 @@ if(isset($_SESSION['usuario'])){
             <div class="general-content">
     
                 <div class="general-4 txt">
-                    <h3>Juan Manuel Ciro Vega</h3>
+                    <h3>Leidy Laura Cañas Naranjo</h3>
                 </div>
                 <div class="general-5 txt">
                     <h3>Alexandra Rodriguez Agudelo</h3>

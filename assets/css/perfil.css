@@ -1,77 +1,110 @@
-/* Estilo general */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
-    margin: 0;
-    padding: 0;
+    background-color: #f2f2f2;
 }
 
 .container {
-    max-width: 800px;
+    width: 80%;
     margin: 0 auto;
-    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 50px;
 }
 
-/* Estilo del perfil */
-.perfil-container {
+.profile-box {
+    width: 300px;
     background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
     padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.perfil-container h1 {
-    font-size: 28px;
+.profile-box h1 {
+    margin-top: 0;
+    text-align: center;
     color: #333;
+}
+
+.search-form {
     margin-bottom: 20px;
 }
 
-.perfil-info p {
-    font-size: 18px;
-    color: #666;
-    margin-bottom: 10px;
-}
-
-/* Estilo de los formularios */
-main {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-}
-
-form {
-    margin-bottom: 20px;
-}
-
-label {
+.search-form label {
     display: block;
-    font-size: 16px;
-    color: #333;
     margin-bottom: 5px;
 }
 
-input[type="text"],
-input[type="password"] {
+.search-form input[type="text"] {
     width: 100%;
-    padding: 10px;
-    font-size: 16px;
+    padding: 8px;
     border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-bottom: 10px;
+    border-radius: 5px;
 }
 
-button {
+.search-form button {
+    width: 100%;
+    padding: 8px;
     background-color: #007bff;
     color: #fff;
-    padding: 10px 20px;
-    font-size: 16px;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
 }
 
-button:hover {
-    background-color: #0056b3;
+.info-box {
+    flex-grow: 1;
+    margin: 0 20px;
+}
+
+.change-forms {
+    width: 300px;
+}
+
+.change-form {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.change-form h2 {
+    margin-top: 0;
+    color: #333;
+}
+
+.change-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.change-form input[type="password"],
+.change-form input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.change-form button {
+    width: 100%;
+    padding: 8px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+footer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+footer a {
+    margin: 0 5px;
+    color: #007bff;
+    text-decoration: none;
 }
