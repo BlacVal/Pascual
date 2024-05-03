@@ -124,7 +124,7 @@ mysqli_close($conexion);
     <footer>
         <a href="#search-form">Buscar</a> |
         <a href="#change-forms">Cambiar Contraseña/Nombre</a> |
-        <a href="#profile-info">Información de Perfil</a>
+        <a href="#profile-info">Información de Perfil</a> |
         <a href="/inicio.php">Volver al inicio</a>
     </footer>
     </center>
