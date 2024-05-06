@@ -47,7 +47,10 @@ if(isset($_SESSION['usuario'])){
                     <li><a href="/php/logout.php">Cerrar sesión</a></li>
                 </ul>
             </li>
-        <?php endif;?>
+        <?php endif; ?>
+
+        <!-- Enlace para buscar libros -->
+        <li><a href="/php/buscar_libros.php">Buscar Libros</a></li>
     </ul>
 </nav>
 </div>

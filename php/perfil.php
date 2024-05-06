@@ -1,19 +1,38 @@
 <?php
+// Conexión a la base de datos
 $conexion = mysqli_connect("localhost", "root", "", "Login_register_db");
+
+// Verificar la conexión
+if (mysqli_connect_errno()) {
+    die("Error de conexión a la base de datos: " . mysqli_connect_error());
+}
+
+// Función para limpiar y validar datos de entrada
+function limpiar_entrada($dato) {
+    $dato = trim($dato);
+    $dato = stripslashes($dato);
+    $dato = htmlspecialchars($dato);
+    return $dato;
+}
 
 // Verificar si se ha enviado el formulario de búsqueda por cédula
 if(isset($_POST['buscar'])) {
     // Obtener la cédula ingresada por el usuario
-    $cedula = $_POST['cedula'];
+    $cedula = limpiar_entrada($_POST['cedula']);
 
-    // Consulta para obtener la información del usuario con la cédula proporcionada
-    $sql = "SELECT * FROM usuarios WHERE cedula = '$cedula'";
-    $resultado = mysqli_query($conexion, $sql);
+    // Consulta preparada para evitar la inyección SQL
+    $sql = "SELECT usuario, correo, contrasena FROM usuarios WHERE cedula = ?";
+    $stmt = mysqli_prepare($conexion, $sql);
+    mysqli_stmt_bind_param($stmt, "s", $cedula);
+    mysqli_stmt_execute($stmt);
+    $resultado = mysqli_stmt_get_result($stmt);
 
     // Verificar si se encontró algún resultado
     if (mysqli_num_rows($resultado) > 0) {
         // Mostrar la información del usuario
         $fila = mysqli_fetch_assoc($resultado);
+        // Guardar el nombre de usuario
+        $usuario = $fila["usuario"];
         // Puedes mostrar más información aquí según tu base de datos
     } else {
         echo "<div class='profile-info'>No se encontraron resultados para la cédula ingresada.</div>";
@@ -23,23 +42,30 @@ if(isset($_POST['buscar'])) {
 // Verificar si se ha enviado el formulario de cambio de contraseña
 if(isset($_POST['cambiar_contraseña'])) {
     // Obtener la nueva contraseña y la confirmación
-    $nueva_contraseña = $_POST['nueva_contraseña'];
-    $confirmar_contraseña = $_POST['confirmar_contraseña'];
+    $nueva_contraseña = limpiar_entrada($_POST['nueva_contraseña']);
+    $confirmar_contraseña = limpiar_entrada($_POST['confirmar_contraseña']);
 
     // Verificar si las contraseñas coinciden
     if($nueva_contraseña === $confirmar_contraseña) {
         // Hash de la nueva contraseña
         $hash_contraseña = password_hash($nueva_contraseña, PASSWORD_DEFAULT);
 
-        // Actualizar la contraseña en la base de datos
-        $sql_update_contraseña = "UPDATE usuarios SET contraseña = '$hash_contraseña' WHERE cedula = '$cedula'";
-        $resultado_update_contraseña = mysqli_query($conexion, $sql_update_contraseña);
+        // Verificar si la cédula está definida
+        if(isset($cedula)) {
+            // Actualizar la contraseña en la base de datos
+            $sql_update_contraseña = "UPDATE usuarios SET contrasena = ? WHERE cedula = ?";
+            $stmt = mysqli_prepare($conexion, $sql_update_contraseña);
+            mysqli_stmt_bind_param($stmt, "ss", $hash_contraseña, $cedula);
+            $resultado_update_contraseña = mysqli_stmt_execute($stmt);
 
-        // Verificar si la actualización fue exitosa
-        if($resultado_update_contraseña) {
-            echo "<div class='message'>Contraseña actualizada correctamente.</div>";
+            // Verificar si la actualización fue exitosa
+            if($resultado_update_contraseña) {
+                echo "<div class='message'>Contraseña actualizada correctamente.</div>";
+            } else {
+                echo "<div class='message'>Error al actualizar la contraseña: " . mysqli_error($conexion) . "</div>";
+            }
         } else {
-            echo "<div class='message'>Error al actualizar la contraseña: " . mysqli_error($conexion) . "</div>";
+            echo "<div class='message'>Error: No se ha proporcionado la cédula.</div>";
         }
     } else {
         echo "<div class='message'>Las contraseñas no coinciden.</div>";
@@ -49,24 +75,31 @@ if(isset($_POST['cambiar_contraseña'])) {
 // Verificar si se ha enviado el formulario de cambio de nombre de usuario
 if(isset($_POST['cambiar_nombre'])) {
     // Obtener el nuevo nombre de usuario
-    $nuevo_nombre = $_POST['nuevo_nombre'];
+    $nuevo_nombre = limpiar_entrada($_POST['nuevo_nombre']);
 
-    // Actualizar el nombre de usuario en la base de datos
-    $sql_update_nombre = "UPDATE usuarios SET usuario = '$nuevo_nombre' WHERE cedula = '$cedula'";
-    $resultado_update_nombre = mysqli_query($conexion, $sql_update_nombre);
+    // Verificar si la cédula está definida
+    if(isset($cedula)) {
+        // Actualizar el nombre de usuario en la base de datos
+        $sql_update_nombre = "UPDATE usuarios SET usuario = ? WHERE cedula = ?";
+        $stmt = mysqli_prepare($conexion, $sql_update_nombre);
+        mysqli_stmt_bind_param($stmt, "ss", $nuevo_nombre, $cedula);
+        $resultado_update_nombre = mysqli_stmt_execute($stmt);
 
-    // Verificar si la actualización fue exitosa
-    if($resultado_update_nombre) {
-        echo "<div class='message'>Nombre de usuario actualizado correctamente.</div>";
+        // Verificar si la actualización fue exitosa
+        if($resultado_update_nombre) {
+            echo "<div class='message'>Nombre de usuario actualizado correctamente.</div>";
+        } else {
+            echo "<div class='message'>Error al actualizar el nombre de usuario: " . mysqli_error($conexion) . "</div>";
+        }
     } else {
-        echo "<div class='message'>Error al actualizar el nombre de usuario: " . mysqli_error($conexion) . "</div>";
+        echo "<div class='message'>Error: No se ha proporcionado la cédula.</div>";
     }
 }
 
 // Cerrar la conexión
 mysqli_close($conexion);
 ?>
-<center>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -76,6 +109,7 @@ mysqli_close($conexion);
     <link rel="stylesheet" href="/assets/css/perfil.css">
 </head>
 <body>
+    <center>
     <div class="container">
         <div class="profile-box">
             <h1>Mi Perfil</h1>
@@ -94,6 +128,7 @@ mysqli_close($conexion);
         echo "<h2>Información del Perfil</h2>";
         echo "<p>Nombre: " . $fila["usuario"] . "</p>";
         echo "<p>Email: " . $fila["correo"] . "</p>";
+        echo "<p>Contraseña: " . $fila["contrasena"] . "</p>";
         // Puedes mostrar más información aquí según tu base de datos
     } else {
         echo "<p>No se encontró información del perfil.</p>";
@@ -102,22 +137,24 @@ mysqli_close($conexion);
 </div>
         <div class="change-forms">
             <!-- Formulario para cambiar la contraseña -->
-            <form method="POST" class="change-form">
-                <h2>Cambiar Contraseña</h2>
-                <label for="nueva_contraseña">Nueva Contraseña:</label>
-                <input type="password" name="nueva_contraseña" id="nueva_contraseña" required>
-                <label for="confirmar_contraseña">Confirmar Contraseña:</label>
-                <input type="password" name="confirmar_contraseña" id="confirmar_contraseña" required>
-                <button type="submit" name="cambiar_contraseña">Cambiar Contraseña</button>
+            <form method="POST" action="cambiar_contrasena.php" class="change-form">
+                <h2>Cambiar contraseña</h2>
+                <input type="text" name="usuario" placeholder="Usuario">
+                <input type="password" name="contrasena" placeholder="Nueva Contraseña">
+                <input type="password" name="confirmar_contrasena" placeholder="Confirmar Contraseña">
+                <button type="submit" name="submit">Cambiar Contraseña</button>
             </form>
 
+
             <!-- Formulario para cambiar el nombre de usuario -->
+            <?php if (isset($cedula)): ?>
             <form method="POST" class="change-form">
                 <h2>Cambiar Nombre de Usuario</h2>
                 <label for="nuevo_nombre">Nuevo Nombre de Usuario:</label>
                 <input type="text" name="nuevo_nombre" id="nuevo_nombre" required>
                 <button type="submit" name="cambiar_nombre">Cambiar Nombre de Usuario</button>
             </form>
+            <?php endif; ?>
         </div>
     </div>
 

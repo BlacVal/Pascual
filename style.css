@@ -521,3 +521,40 @@ h2 {
 .navbar ul li:hover ul {
     display: block; /* Muestra el submenú al hacer hover */
 }
+/* Estilos para la barra de búsqueda */
+.search-bar {
+    margin-top: 20px; /* Ajusta el margen superior según sea necesario */
+}
+
+.search-bar input[type="text"] {
+    padding: 10px;
+    border: 2px solid #1b293a; /* Color del borde del campo de búsqueda */
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+}
+
+.search-bar input[type="submit"] {
+    padding: 10px 20px;
+    border: none;
+    background-color: #1b293a; /* Color de fondo del botón de búsqueda */
+    color: #fffdfc; /* Color del texto del botón de búsqueda */
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-bar input[type="submit"]:hover {
+    background-color: #fffdfc; /* Cambia el color de fondo al pasar el ratón */
+    color: #1b293a; /* Cambia el color del texto al pasar el ratón */
+}
+
+/* Ajustes adicionales */
+.menu .navbar ul li {
+    margin-right: 10px; /* Reduzco el margen derecho para dejar espacio para el campo de búsqueda */
+}
+
+.menu .navbar ul li:last-child {
+    margin-right: 0; /* Aseguro que el último elemento no tenga margen derecho */
+}
