@@ -1,29 +1,33 @@
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #000;
-    color: #fff;
+    background-color: #0d0d0d;
+    color: #e6e6e6;
     font-size: 18px;
     font-weight: bold;
     text-shadow: 1px 1px #000;
+    margin: 0;
+    padding: 0;
 }
 
 .container {
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
     padding-top: 50px;
     padding-bottom: 50px;
 }
 
-.profile-box {
-    width: 300px;
+.profile-box, .info-box, .change-forms {
+    width: 100%;
+    max-width: 400px;
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
     padding: 20px;
     text-align: center;
+    margin-bottom: 20px;
     animation: load 1s cubic-bezier(0.77, 0, 0.175, 1);
 }
 
@@ -38,172 +42,67 @@ body {
   }
 }
 
-.profile-box::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(45deg, #00ff90, #00ffcc, #00ffff, #00ccff, #0090ff, #0060b5, #00307a);
-  background-size: 400% 400%;
-  animation: Gradient 3s ease infinite;
-  opacity: 0;
-  z-index: -1;
+.profile-box h1, .info-box h2, .change-form h2 {
+    color: #00ffcc;
 }
 
-@keyframes Gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-.profile-box h1 {
-    margin-top: 0;
-    color: #fff;
-}
-
-.search-form {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    animation: search 1s cubic-bezier(0.77, 0, 0.175, 1);
-}
-
-@keyframes search {
-  0% {
-    transform: translateY(-10px);
-    opacity: 0.5;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-.search-form input[type="text"] {
-  border: none;
-  border-radius: 5px;
-  background-color: rgba(255, 255, 255, 0.1);
-  padding: 10px;
-  color: #fff;
-  font-size: 18px;
-  width: 300px;
-  margin-right: 10px;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-  transition: all 0.3s ease-in-out;
-}
-
-.search-form input[type="text"]:focus {
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-}
-
-.search-form button {
-  border: none;
-  border-radius: 5px;
-  background-color: #fff;
-  padding: 10px 20px;
-  color: #000;
-  font-size: 18px;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-}
-
-.search-form button:hover {
-  background-color: #f5f5f5;
-}
-
-.info-box {
-    flex-grow: 1;
-    margin: 0 20px;
-}
-
-.change-forms {
-    width: 300px;
-}
-
-.change-form {
+.search-form, .change-form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    animation: change 1s cubic-bezier(0.77, 0, 0.175, 1);
+    margin-bottom: 20px;
 }
 
-@keyframes change {
-  0% {
-    transform: translateY(-10px);
-    opacity: 0.5;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-.change-form h2 {
-    margin-top: 0;
-    color: #fff;
-}
-
-.change-form label {
-    display: block;
-    margin-bottom: 5px;
-    color: #fff;
-}
-
+.search-form input[type="text"],
 .change-form input[type="password"],
 .change-form input[type="text"] {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #fff;
-    border-radius: 5px;
-    font-size: 16px;
-    margin-bottom: 10px;
-    background-color: rgba(255, 255, 255, 0.1);
-    color: #fff;
-    transition: all 0.3s ease-in-out;
-}
-
-.change-form input[type="password"]:focus,
-.change-form input[type="text"]:focus {
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-}
-
-.change-form button {
-    width: 100%;
-    padding: 8px;
-    background-color: #fff;
-    color: #000;
     border: none;
     border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    color: #e6e6e6;
+    font-size: 18px;
+    width: 100%;
+    margin-bottom: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
     transition: all 0.3s ease-in-out;
 }
 
-.change-form button:hover {
-    background-color: #f5f5f5;
+.search-form input[type="text"]:focus,
+.change-form input[type="password"]:focus,
+.change-form input[type="text"]:focus {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.search-form button, .change-form button {
+    border: none;
+    border-radius: 5px;
+    background-color: #00ffcc;
+    padding: 10px 20px;
+    color: #000;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    width: 100%;
+}
+
+.search-form button:hover, .change-form button:hover {
+    background-color: #00e6b3;
 }
 
 footer {
     text-align: center;
     margin-top: 20px;
-    color: #fff;
+    color: #00ffcc;
 }
 
 footer a {
     margin: 0 5px;
-    color: #007bff;
+    color: #00ffcc;
     text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+footer a:hover {
+    color: #00e6b3;
 }

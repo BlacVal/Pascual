@@ -1,560 +1,424 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
-* {
-    margin: 0;
+*{
     padding: 0;
+    margin: 0;
+    outline: none;
+    border: none;
     box-sizing: border-box;
+}
+
+img{
+    width: 100%;
+    display: flex;
+}
+
+a{
     text-decoration: none;
-    list-style: none;
 }
 
 body{
     font-family: 'Poppins', sans-serif;
+    background-color: #18181B;
 }
 
-.container {
+nav{
     max-width: 1200px;
-    margin: 0 auto;
-}
-
-.header {
-    background-image:  url(images/bg.png);
-    background-position: center bottom;
-    background-repeat: no-repeat;
-    background-size: cover;
-    min-height: 70vh;
-    display: flex;
-    align-items: center;
-}
-
-.menu {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
+    margin: auto;
+    padding: 2rem 1rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    z-index: 1000;
+    gap: 2rem;
 }
 
-.logo {
-    color: #fffdfc;
-    font-size: 25px;
-    font-weight: 800;
+.nav-logo{
+    max-width: 100px;
 }
 
-.menu .navbar ul {
-    list-style-type: none;
+.nav-links{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+
+.link a{
+    position: relative;
+    padding-bottom: 0.75rem;
+    color: #fff;
+}
+
+.link a::after{
+    content: "";
+    position: absolute;
+    height: 2px;
+    width: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #1d4ed8;
+    transition: all 0.3s ease;
+}
+
+.link a:hover::after{
+    width: 70%;
+}
+
+.btn{
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #1d4ed8;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn:hover{
+    background-color: #1e40af;
+}
+
+.container{
+    max-width: 1200px;
+    margin: auto;
+    padding: 5rem 2rem;
+}
+
+.blur{
+    position: absolute;
+    box-shadow: 0 0 1000px 50px #1d4ed8;
+    z-index: -100;
+}
+
+header{
+    position: relative;
+    padding-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    gap: 2rem;
+}
+
+header .content h4{
+    margin-bottom: 1rem;
+    color: #ccc;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+header .content h1{
+    color: #fff;
+    margin-bottom: 1rem;
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 4rem;
+}
+
+header .content h1 span{
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 1px #fff;
+}
+
+header .content p{
+    margin-bottom: 2rem;
+    color: #ccc;
+}
+
+header .image{
+    position: relative;
+}
+
+header .image::before{
+    content: "o";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 38rem;
+    font-weight: 400;
+    line-height: 20rem;
+    color: #1d4ed8;
+    opacity: 0.2;
+    z-index: -100;
+}
+
+header .image img{
+    max-width: 600px;
+    margin: auto;
+}
+
+section .header{
+    margin-bottom: 1rem;
+    color: #fff;
+    text-align: center;
+    font-size: 2.25rem;
+    font-weight: 600;
+}
+
+.features{
+    margin-top: 4rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+}
+
+.features .card{
+    background-color: #27272a;
+    padding: 1rem;
+    border: 2px solid transparent;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+.features .card:hover{
+    background-color: #323232;
+    border-color: #fff;
+}
+
+.features .card span{
+    display: inline-block;
+    background-color: #1e40af;
+    padding: 2px 9px;
+    margin-bottom: 1rem;
+    font-size: 1.75rem;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.features .card h4{
+    margin-bottom: 0.5rem;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.features .card p{
+    color: #ccc;
+    margin-bottom: 1rem;
+}
+
+.features .card a{
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.features .card a:hover{
+    color: #1e40af;
+}
+/* Estilos para el submenú */
+.menu-item {
+    position: relative;
+}
+
+.submenu {
+    display: none;
+    position: absolute;
+    top: 100%; /* Coloca el submenú justo debajo del elemento principal */
+    left: 0;
+    background-color: #1d4ed8; /* Color de fondo para el submenú */
+    padding: 0;
+    list-style: none;
     margin: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px); /* Para animar desde arriba */
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+}
+
+.menu-item.show .submenu {
+    display: block; /* Asegúrate de que el menú sea accesible para la animación */
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.submenu li {
     padding: 0;
 }
 
-.menu .navbar ul li {
-    position: relative;
-    float: left;
+.submenu .btn {
+    padding: 0.5rem 1rem; /* Ajusta el padding si es necesario */
+    background-color: #1d4ed8; /* Mismo color de fondo que el botón principal */
+    width: 100%;
+    text-align: left; /* Alinea el texto a la izquierda */
 }
 
-.menu .navbar ul li a {
-    font-size: 18px;
-    padding: 20px;
-    color: #fffdfc;
-    display: block;
-    font-weight: 600;
+.submenu .btn a {
+    color: #fff;
 }
 
-#menu{
-    display: none;
-}
-
-.menu-icono {
-    width: 25px;
-}
-
-.menu label {
-    cursor: pointer;
-    display: none;
-}
-
-.header-txt{
+.sub-header{
+    max-width: 600px;
+    margin: auto;
     text-align: center;
+    color: #ccc;
 }
 
-.header-txt h1{
-    font-size: 85px;
-    color: #fffdfc;
-    text-transform: uppercase;
-    margin-bottom: 20px;
+.pricing{
+    margin-top: 4rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
 }
 
-.header-txt p{
-    color: #BEBEBE;
-    font-size: 16px;
-    padding: 0 250px;
-    margin-bottom: 45px;
-}
-
-.btn-1{
-    display: inline-block;
-    padding: 12px 45px;
-    border: 1px solid #fffdfc;
-    color: #fffdfc;
-    font-size: 16px;
-    text-transform: uppercase;
-    font-weight: 600;
-}
-
-.btn-1:hover{
-    color: #1b293a;
-    background-color: #fffdfc;
-}
-
-.general {
-    padding: 50px 0;
-    text-align: center;
-}
-
-.general-content {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 55px;
-}
-
-.general-1 {
-    background-image: url(images/r1.png);
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 450px;
-    padding: 170px 55px;
-
-}
-
-.general-2 {
-    background-image: url(images/r2.png);
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 450px;
-    padding: 170px 55px;
-
-}
-
-.general-3 {
-    background-image: url(images/r3.png);
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 450px;
-    padding: 170px 55px;
-
-}
-
-.general-4 {
-    background-image: url(images/r4.png);
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 450px;
-    padding: 170px 55px;
-    flex-basis: calc(25% - 20px);
-
-}
-
-.general-5 {
-    background-image: url(images/r5.png);
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 450px;
-    padding: 170px 55px;
-    flex-basis: calc(25% - 20px);
-
-}
-
-.general-6 {
-    background-image: url(images/r6.png);
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 450px;
-    padding: 170px 55px;
-    flex-basis: calc(25% - 20px);
-
-}
-.general-7 {
-    background-image: url(images/r6.png);
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 450px;
-    padding: 170px 55px;
-    flex-basis: calc(25% - 20px);
-
-}
-
-h2 {
-    font-size: 70px;
-    text-transform: uppercase;
-    color: #1b293a;
-}
-
-.txt h3 {
-    font-size: 18px;
-    color: #fffdfc;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-}
-
-.txt p{
-    color: #EBEBEB;
-    font-size: 16px;
-}
-
-.info-1{
-    padding: 250px 0;
-    background-image: url(images/bg2.png);
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-}
-
-.info-content{
-    text-align: center;
-}
-
-.info-content h2, span {
-    color: #fffdfc;
-}
-
-.info-circle{
-    display: flex;
-    justify-content: space-between;
-    margin-top: 55px;
-}
-
-.circle-txt{
-    width: 25%;
+.pricing .card{
+    padding: 3rem 2rem;
+    background-color: #27272a;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
-    margin: 0 10px;
+    border: 2px solid transparent;
+    border-radius: 15px;
+    transition: all 0.3s ease;
 }
 
-.circle-1{
-    height: 100px;
-    width: 100px;
-    border: 1px solid #fffdfc;
-    border-radius: 50%;
-    padding-top: 35px;
+.pricing .card:hover{
+    background-color: #323232;
+    border-color: #fff;
 }
 
-.circle-1 h3{
-    color: #EBEBEB;
-    font-size: 16px;
+.pricing .card .content{
+    flex: 1;
+    margin-bottom: 2rem;
 }
 
-.circle-txt p{
-    color: #fffdfc;
-    margin-top: 25px;
+.pricing .card h4{
+    margin-bottom: 1rem;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 500;
 }
 
-.info-2 {
-    padding: 250px 0;
-    background-image: url(images/bg3.png);
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
+.pricing .card h3{
+    color: #fff;
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    font-weight: 600;
+    border-bottom: 2px dashed #fff;
 }
 
-.testi{
+.pricing .card p{
+    color: #fff;
+    margin-bottom: 0.75rem;
+}
+
+.pricing .card p i{
+    color: #ccc;
+    font-size: 1.2rem;
+    margin-right: 0.3rem;
+}
+
+.pricing .card button{
+    color: #fff;
+    background-color: transparent;
+    border: 2px solid #fff;
+}
+
+.pricing .card button:hover{
+    background-color: #1e40af;
+    border-color: #1e40af;
+}
+
+footer{
+    position: relative;
+    display: grid;
+    grid-template-columns: 400px repeat(3, 1fr);
+    gap: 2rem;
+}
+
+footer .column .logo{
+    max-width: 100px;
+    margin-bottom: 2rem;
+}
+
+footer .column p{
+    color: #ccc;
+    margin-bottom: 2rem;
+}
+
+footer .column .socials{
     display: flex;
     align-items: center;
-    text-align: left;
-    margin-top: 35px;
+    gap: 1rem;
 }
 
-.testi-left{
-    width: 50%;
-    padding-right: 25px;
+footer .column .socials a{
+    color: #ccc;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    font-size: 1.25rem;
+    border-radius: 100%;
+    transition: all 0.3s ease;
 }
 
-.testi-right{
-    width: 50%;
-    padding-left: 35px;
+footer .column .socials a:hover{
+    color: #fff;
+    background-color: #1d4ed8;
+    border-color: #1d4ed8;
 }
 
-.testi-txt{
-    margin-bottom: 25px;
+footer .column h4{
+    color: #fff;
+    margin-bottom: 2rem;
+    font-size: 1.2rem;
+    font-weight: 500;
 }
 
-.testi-txt img{
-    width: 50px;
-    margin-bottom: 15px;
+footer .column > a{
+    display: block;
+    color: #ccc;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
 }
 
-.testi-txt h3{
-    font-size: 20px;
-    color: #fffdfc;
+footer .column > a:hover{
+    color: #1d4ed8;
 }
 
-.testi-txt p{
-    color: #EBEBEB;
-    font-size: 16px;
-}
-
-.footer{
-    padding: 100px 0 0 0;
+.copyright{
+    max-width: 1200px;
+    margin: auto;
+    padding: 1rem;
+    color: #fff;
+    font-size: 0.8rem;
     text-align: center;
 }
 
-.form{
-    margin-top: 35px;
-}
-
-.campo{
-    margin-right: 10px;
-    padding: 17px 35px;
-    border: 2px solid #B4B4B4;
-    outline: none;
-    color: #1b293a;
-}
-
-.campo::placeholder {
-    color: #B4B4B4;
-
-}
-
-.btn-2{
-    padding: 17px 35px;
-    border: 2px solid #1b293a;
-    background-color: #1b293a;
-    color: #fffdfc;
-}
-
-.footer-txt {
-    margin-top: 100px;
-    border-top: 1px solid #B4B4B47E;
-    padding: 20px 0;
-}
-
-.footer-txt p {
-    color: #1b293a;
-    font-size: 16px;
-}
-
-@media(max-width:991px) {
-    .menu {
-        padding: 30px;
+@media (width < 900px){
+    .nav-links{
+        display: none;
     }
-
-    .menu label {
-        display:initial;
+    header{
+        grid-template-columns: repeat(1, 1fr);
     }
+    header .image{
+        grid-area: 1/1/2/2;
+    }
+    .features{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .pricing{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    footer{
+        grid-template-columns: 1fr 200px;
+    }
+}
 
-    .menu .navbar{
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background-color: #1b293a;
+@media (width < 600px){
+    header .image::before{
         display: none;
     }
 
-    .menu .navbar ul li {
-        width: 1005;
+    .features{
+        grid-template-columns: repeat(1, 1fr);
     }
 
-    #menu:checked  ~ .navbar {
-        display: initial;
+    .pricing{
+        grid-template-columns: repeat(1, 1fr);
     }
 
-
-    .header{
-        min-height: 0vh;
+    footer{
+        grid-template-columns: 1fr 150px;
     }
-
-    .header_content{
-        padding: 100px 30px;
-    }
-
-    .header-txt h1{
-        font-size: 50px;
-    }
-
-    .header-txt p {
-        padding: 0;
-    }
-
-    .general {
-        padding: 30px 30px 0 30px;
-    }
-
-    .general-content {
-        flex-direction: column;
-        align-items: center;
-        margin-top: 20px;
-    }
-
-    .general-1,
-    .general-2,
-    .general-3,
-    .general-4,
-    .general-5,
-    .general-6 {
-        height: 350px;
-        padding: 100px 30px;
-        margin-bottom: 10px;
-    }
-
-    .info-1 {
-        padding: 200px 30px;
-        background-size: cover;
-        margin-top: -110px;
-    }
-
-    .info-circle{
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .circle-txt {
-        width: 100%;
-        margin-bottom: 25px;
-    }
-
-    .g2{
-        margin-top: .110px;
-    }
-
-    .info-2{
-        padding: 280px 30px;
-        background-size: cover;
-        margin-top: -110px;
-    }
-
-    .testi {
-        flex-direction: column;
-    }
-
-    .testi-left {
-        width: 100%;
-        padding-right: 0;
-    }
-
-    .testi-right {
-        width: 100%;
-        padding-right: 0;
-    }
-
-    h2{
-        font-size: 40px;
-    }
-
-    .footer{
-        padding: 0;
-        margin-top: -140px;
-    }
-
-    form{
-        display: flex;
-        flex-direction: column;
-        padding: 0 50px;
-    }
-
-    .campo {
-        margin: 0 0 10px 0;
-
-    }
-
-    .footer-txt{
-        margin-top: 30px;
-    }
-
-}
-
-/* Estilo para mostrar "Productos" al hacer hover sobre "Servicios" */
-.menu .navbar ul ul {
-    display: none;
-    position: absolute;
-    background-color: transparent;
-    padding: 10px;
-    z-index: 1000; /* Asegúrate de que el submenu esté por encima del resto del contenido */
-}
-
-.menu .navbar ul li.servicios:hover ul {
-    display: block; /* Mostrar el submenú de "Servicios" al hacer hover */
-}
-
-/* Ajustes para ocultar "Productos" inicialmente */
-.menu .navbar ul ul li:first-child {
-    display: block; /* Ocultar el primer elemento del submenú */
-}
-/* Agrega estos estilos al final de tu archivo CSS */
-
-.navbar ul li {
-    position: relative;
-    float: left;
-    margin-right: 20px; /* Ajusta el espacio entre elementos del menú */
-}
-
-.navbar ul li:last-child {
-    margin-right: 0; /* Elimina el espacio a la derecha del último elemento */
-}
-
-/* Estilos para el submenú */
-.navbar ul ul {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    display: none;
-    background-color: #1b293a; /* Cambia el color de fondo del submenú si lo deseas */
-    padding: 10px;
-}
-
-.navbar ul ul li {
-    width: 100%; /* Ajusta el ancho del submenú */
-    margin: 5px 0; /* Ajusta el espacio entre elementos del submenú */
-}
-
-.navbar ul li:hover ul {
-    display: block; /* Muestra el submenú al hacer hover */
-}
-/* Estilos para la barra de búsqueda */
-.search-bar {
-    margin-top: 20px; /* Ajusta el margen superior según sea necesario */
-}
-
-.search-bar input[type="text"] {
-    padding: 10px;
-    border: 2px solid #1b293a; /* Color del borde del campo de búsqueda */
-    border-radius: 5px;
-    font-size: 16px;
-    outline: none;
-}
-
-.search-bar input[type="submit"] {
-    padding: 10px 20px;
-    border: none;
-    background-color: #1b293a; /* Color de fondo del botón de búsqueda */
-    color: #fffdfc; /* Color del texto del botón de búsqueda */
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.search-bar input[type="submit"]:hover {
-    background-color: #fffdfc; /* Cambia el color de fondo al pasar el ratón */
-    color: #1b293a; /* Cambia el color del texto al pasar el ratón */
-}
-
-/* Ajustes adicionales */
-.menu .navbar ul li {
-    margin-right: 10px; /* Reduzco el margen derecho para dejar espacio para el campo de búsqueda */
-}
-
-.menu .navbar ul li:last-child {
-    margin-right: 0; /* Aseguro que el último elemento no tenga margen derecho */
 }

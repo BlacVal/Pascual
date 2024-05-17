@@ -74,7 +74,7 @@ if (isset($_GET['q'])) {
         </div>
     </div>
     <footer>
-        <p>Desarrollado por Samuel Brand Gaviria</p>
+        <p>Developed by the XXX work team</p>
     </footer>
     <script src="/assets/js/libros.js"></script> <!-- Archivo JavaScript para la interactividad -->
 </body>

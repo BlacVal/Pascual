@@ -7,16 +7,16 @@ if (mysqli_connect_errno()) {
     die("Error de conexión a la base de datos: " . mysqli_connect_error());
 }
 
+// Iniciar sesión
+session_start();
+
 // Función para limpiar y validar datos de entrada
 function limpiar_entrada($dato) {
-    $dato = trim($dato);
-    $dato = stripslashes($dato);
-    $dato = htmlspecialchars($dato);
-    return $dato;
+    return htmlspecialchars(stripslashes(trim($dato)));
 }
 
 // Verificar si se ha enviado el formulario de búsqueda por cédula
-if(isset($_POST['buscar'])) {
+if (isset($_POST['buscar'])) {
     // Obtener la cédula ingresada por el usuario
     $cedula = limpiar_entrada($_POST['cedula']);
 
@@ -28,38 +28,42 @@ if(isset($_POST['buscar'])) {
     $resultado = mysqli_stmt_get_result($stmt);
 
     // Verificar si se encontró algún resultado
-    if (mysqli_num_rows($resultado) > 0) {
-        // Mostrar la información del usuario
-        $fila = mysqli_fetch_assoc($resultado);
-        // Guardar el nombre de usuario
-        $usuario = $fila["usuario"];
-        // Puedes mostrar más información aquí según tu base de datos
-    } else {
-        echo "<div class='profile-info'>No se encontraron resultados para la cédula ingresada.</div>";
-    }
+// Verificar si se ha encontrado algún resultado
+if (mysqli_num_rows($resultado) > 0) {
+    // Guardar la información del usuario en la sesión como un array asociativo
+    $usuario = mysqli_fetch_assoc($resultado);
+    $_SESSION['usuario'] = $usuario;
+    $_SESSION['cedula'] = $cedula;
+
+    // Guardar la contraseña sin cifrar en la sesión temporalmente
+    $_SESSION['contrasena_plana'] = $usuario['contrasena'];
+} else {
+    echo "<div class='message'>No se encontraron resultados para la cédula ingresada.</div>";
+}
+
 }
 
 // Verificar si se ha enviado el formulario de cambio de contraseña
-if(isset($_POST['cambiar_contraseña'])) {
+if (isset($_POST['cambiar_contraseña'])) {
     // Obtener la nueva contraseña y la confirmación
     $nueva_contraseña = limpiar_entrada($_POST['nueva_contraseña']);
     $confirmar_contraseña = limpiar_entrada($_POST['confirmar_contraseña']);
 
     // Verificar si las contraseñas coinciden
-    if($nueva_contraseña === $confirmar_contraseña) {
-        // Hash de la nueva contraseña
+    if ($nueva_contraseña === $confirmar_contraseña) {
+        // Hash de la nueva contraseña 
         $hash_contraseña = password_hash($nueva_contraseña, PASSWORD_DEFAULT);
 
-        // Verificar si la cédula está definida
-        if(isset($cedula)) {
+        // Verificar si la cédula está en la sesión
+        if (isset($_SESSION['cedula'])) {
             // Actualizar la contraseña en la base de datos
             $sql_update_contraseña = "UPDATE usuarios SET contrasena = ? WHERE cedula = ?";
             $stmt = mysqli_prepare($conexion, $sql_update_contraseña);
-            mysqli_stmt_bind_param($stmt, "ss", $hash_contraseña, $cedula);
+            mysqli_stmt_bind_param($stmt, "ss", $hash_contraseña, $_SESSION['cedula']);
             $resultado_update_contraseña = mysqli_stmt_execute($stmt);
 
             // Verificar si la actualización fue exitosa
-            if($resultado_update_contraseña) {
+            if ($resultado_update_contraseña) {
                 echo "<div class='message'>Contraseña actualizada correctamente.</div>";
             } else {
                 echo "<div class='message'>Error al actualizar la contraseña: " . mysqli_error($conexion) . "</div>";
@@ -73,20 +77,22 @@ if(isset($_POST['cambiar_contraseña'])) {
 }
 
 // Verificar si se ha enviado el formulario de cambio de nombre de usuario
-if(isset($_POST['cambiar_nombre'])) {
+if (isset($_POST['cambiar_nombre'])) {
     // Obtener el nuevo nombre de usuario
     $nuevo_nombre = limpiar_entrada($_POST['nuevo_nombre']);
 
-    // Verificar si la cédula está definida
-    if(isset($cedula)) {
+    // Verificar si la cédula está en la sesión
+    if (isset($_SESSION['cedula'])) {
         // Actualizar el nombre de usuario en la base de datos
         $sql_update_nombre = "UPDATE usuarios SET usuario = ? WHERE cedula = ?";
         $stmt = mysqli_prepare($conexion, $sql_update_nombre);
-        mysqli_stmt_bind_param($stmt, "ss", $nuevo_nombre, $cedula);
+        mysqli_stmt_bind_param($stmt, "ss", $nuevo_nombre, $_SESSION['cedula']);
         $resultado_update_nombre = mysqli_stmt_execute($stmt);
 
         // Verificar si la actualización fue exitosa
-        if($resultado_update_nombre) {
+        if ($resultado_update_nombre) {
+            // Actualizar la información del usuario en la sesión
+            $_SESSION['usuario']['usuario'] = $nuevo_nombre;
             echo "<div class='message'>Nombre de usuario actualizado correctamente.</div>";
         } else {
             echo "<div class='message'>Error al actualizar el nombre de usuario: " . mysqli_error($conexion) . "</div>";
@@ -122,32 +128,34 @@ mysqli_close($conexion);
             </div>
         </div>
         <div class="info-box">
-    <?php
-    // Verificar si se ha encontrado información del usuario
-    if (isset($fila)) {
-        echo "<h2>Información del Perfil</h2>";
-        echo "<p>Nombre: " . $fila["usuario"] . "</p>";
-        echo "<p>Email: " . $fila["correo"] . "</p>";
-        echo "<p>Contraseña: " . $fila["contrasena"] . "</p>";
-        // Puedes mostrar más información aquí según tu base de datos
+        <?php
+// Verificar si se ha encontrado información del usuario
+if (isset($_SESSION['usuario']) && is_array($_SESSION['usuario'])) {
+    $fila = $_SESSION['usuario'];
+    echo "<h2>Información del Perfil</h2>";
+    echo "<p>Nombre: " . htmlspecialchars($fila["usuario"]) . "</p>";
+    echo "<p>Email: " . htmlspecialchars($fila["correo"]) . "</p>";
+    if (isset($_SESSION['contrasena_plana'])) {
+        echo "<p>Contraseña: <span id='password'>*****</span> <button onclick='togglePasswordVisibility()'>Mostrar</button></p>";
     } else {
-        echo "<p>No se encontró información del perfil.</p>";
+        echo "<p>Contraseña: ***** (oculta)</p>";
     }
-    ?>
+} else {
+    echo "<p>No se encontró información del perfil.</p>";
+}
+?>
 </div>
         <div class="change-forms">
             <!-- Formulario para cambiar la contraseña -->
-            <form method="POST" action="cambiar_contrasena.php" class="change-form">
+            <form method="POST" class="change-form">
                 <h2>Cambiar contraseña</h2>
-                <input type="text" name="usuario" placeholder="Usuario">
-                <input type="password" name="contrasena" placeholder="Nueva Contraseña">
-                <input type="password" name="confirmar_contrasena" placeholder="Confirmar Contraseña">
-                <button type="submit" name="submit">Cambiar Contraseña</button>
+                <input type="password" name="nueva_contraseña" placeholder="Nueva Contraseña" required>
+                <input type="password" name="confirmar_contraseña" placeholder="Confirmar Contraseña" required>
+                <button type="submit" name="cambiar_contraseña">Cambiar Contraseña</button>
             </form>
 
-
             <!-- Formulario para cambiar el nombre de usuario -->
-            <?php if (isset($cedula)): ?>
+            <?php if (isset($_SESSION['cedula'])): ?>
             <form method="POST" class="change-form">
                 <h2>Cambiar Nombre de Usuario</h2>
                 <label for="nuevo_nombre">Nuevo Nombre de Usuario:</label>
@@ -165,6 +173,22 @@ mysqli_close($conexion);
         <a href="/inicio.php">Volver al inicio</a>
     </footer>
     </center>
+<script>
+    function togglePasswordVisibility() {
+        var passwordField = document.getElementById('password');
+        var button = event.target;
+
+        if (passwordField.textContent === '*****') {
+            passwordField.textContent = '<?php echo isset($_SESSION['contrasena_plana']) ? htmlspecialchars($_SESSION['contrasena_plana']) : ""; ?>';
+            button.textContent = 'Ocultar';
+        } else {
+            passwordField.textContent = '*****';
+            button.textContent = 'Mostrar';
+        }
+    }
+</script>
+
+
     <script src="perfil.js"></script>
 </body>
 </html>

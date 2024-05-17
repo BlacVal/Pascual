@@ -7,207 +7,127 @@ if(isset($_SESSION['usuario'])){
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
-    <link rel="icon" href="Logos/Logo4.jpg"  type="image/x-icon"/>
-    <link rel="shortcut icon" href="Logos/Logo4.jpg" type="image/x-icon">
-    <title>Library loan Control</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Library Loan Control</title>
 </head>
+
 <body>
 
+<nav>
+    <div class="nav-logo">
+        <a href="#">
+            <img src="./Logo5.jpg">
+        </a>
+    </div>
 
-<header class="header">
-
-<div class="menu container">
-<a href="#" class="logo">Logo</a>
-<input type="checkbox" id="menu">
-<label for="menu">
-    <img src="images/menu.png" class="menu-icono" alt="Menú">
-</label>
-
-<nav class="navbar">
-    <ul>
-        <!-- Opciones del menú principal -->
-        <li><a href="#">Inicio</a></li>
-        <li class="servicios">
-            <a href="#">Servicios</a>
-            <ul class="submenu">
-                <li><a href="./libro.php">Libros</a></li>
-            </ul>
-        </li>
-        <li><a href="#">Contactos</a></li>
-
-        <!-- Opción de ver perfil (si el usuario está autenticado) -->
-        <?php if(isset($_SESSION['usuario'])):?>
-            <li>
-                <a href="/php/perfil.php">Ver tu perfil</a>
-                <ul class="submenu">
-                    <li><a href="/php/logout.php">Cerrar sesión</a></li>
-                </ul>
-            </li>
-        <?php endif; ?>
-
-        <!-- Enlace para buscar libros -->
-        <li><a href="/php/buscar_libros.php">Buscar Libros</a></li>
+    <ul class="nav-links">
+        <li class="link"><a href="./inicio.php">Home</a></li>
+        <li id="link1" class="link"><a href="./php/buscar_libros.php">books</a></li>
+        <li id="link2" class="link"><a href="./libro.php">loans</a></li>
+        <li id="link3" class="link"><a href="#">About</a></li>
     </ul>
-</nav>
-</div>
 
-        <div class="header-content container">
-
-            <div class="header-txt">
-                <h1>Library loan Control</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae magni nulla praesentium, accusamus voluptatibus ullam voluptatem odit nobis ex sit eos, consequatur debitis perferendis repellat quo perspiciatis architecto odio necessitatibus.
-                </p>
-            </div>
-
+    <?php if(isset($_SESSION['usuario'])):?>
+        <div class="menu-item">
+            <button class="btn">
+                <a href="/php/perfil.php">view profile</a>
+            </button>
+            <ul class="submenu">
+                <li><button class="btn"><a href="/php/logout.php">Sign off</a></button></li>
+            </ul>
         </div>
+    <?php endif; ?>
+</nav>
 
+
+    <header class="container">
+        <div class="content">
+            <span class="blur"></span>
+            <span class="blur"></span>
+            <h4>build your knowledge like a professional</h4>
+            <H1>Hi, I'm <span>Samuel</span>, Web Developer</H1>
+            <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus rem eos aliquid quo rerum
+                temporibus ipsum distinctio numquam ut omnis placeat, nam sint atque quos dolorem laborum? Rerum, esse
+                dolorem.
+            </p>
+            <button class="btn">Get Started</button>
+        </div>
+        <div class="image">
+            <img src="./images/header.png">
+        </div>
     </header>
 
-    <section class="general container">
-        <h2>Programa</h2>
-        <div class="general-content">
-
-            <div class="general-1 txt">
-                <h3>¿Porque una bilbioteca virtual?</h3>
+    <section class="container">
+        <h2 class="header">OUR FEATURES</h2>
+        <div class="features">
+            <div class="card">
+            <center>
+                <span><i class="ri-money-dollar-box-line"></i></span>
+                <h4>Free Information</h4>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam vero libero, molestiae ducimus ut error rem quia. Voluptates, pariatur officiis! Consequuntur nemo natus ullam eligendi expedita tempora laboriosam vitae quam?
+                In the following books, you will have a lot of information that will be useful to you.
                 </p>
+                <a href="./php/buscar_libros.php">Join Now <i class="ri-arrow-right-line"></i></a>
+                </center>
             </div>
-            <div class="general-2 txt">
-                <h3>¿Porque se creo la bibliteca virtual?</h3>
+            <div class="card">
+            <center>
+                <span><i class="ri-bug-line"></i></span>
+                <h4>we help you, with information</h4>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam vero libero, molestiae ducimus ut error rem quia. Voluptates, pariatur officiis! Consequuntur nemo natus ullam eligendi expedita tempora laboriosam vitae quam?
+                Contact us to clarify your doubts, what books are available and more.
                 </p>
+                <a href="./libro.php">Join Now <i class="ri-arrow-right-line"></i></a>
+                </center>
             </div>
-            <div class="general-3 txt">
-                <h3>Con que fin</h3>
+            <div class="card">
+            <center>
+                <span><i class="ri-history-line"></i></span>
+                <h4>Why did we do this project?</h4>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam vero libero, molestiae ducimus ut error rem quia. Voluptates, pariatur officiis! Consequuntur nemo natus ullam eligendi expedita tempora laboriosam vitae quam?
+                Our inspiration to do this project, what was it?
                 </p>
+                <a href="#">Join Now <i class="ri-arrow-right-line"></i></a>
+                </center>
+            </div>
+            <div class="card">
+            <center>
+                <span><i class="ri-shake-hands-line"></i></span>
+                <h4>Cooperation</h4>
+                <p>
+                Our work team 
+                </p>
+                <a href="#">Join Now <i class="ri-arrow-right-line"></i></a>
+                </center>
             </div>
         </div>
-        </section>
+    </section>
 
-        <section class="info-1">
-
-            <div class="info-content container">
-
-                <h2>Informacion</h2>
-
-                <div class="info-circle">
-
-                    <div class="circle-txt">
-                        <div class="circle-1">
-                            <h3>8000 M</h3>
-                        </div>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed unde recusandae in officia deleniti expedita. Aliquam quasi laboriosam eveniet velit itaque est fugiat blanditiis, quae esse voluptas. Amet, magnam ducimus.
-                        </p>
-                    </div>
-                    <div class="circle-txt">
-                        <div class="circle-1">
-                            <h3>6.5 %</h3>
-                        </div>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed unde recusandae in officia deleniti expedita. Aliquam quasi laboriosam eveniet velit itaque est fugiat blanditiis, quae esse voluptas. Amet, magnam ducimus.
-                        </p>
-                    </div>
-                    <div class="circle-txt">
-                        <div class="circle-1">
-                            <h3>-35 C</h3>
-                        </div>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed unde recusandae in officia deleniti expedita. Aliquam quasi laboriosam eveniet velit itaque est fugiat blanditiis, quae esse voluptas. Amet, magnam ducimus.
-                        </p>
-                    </div>
-                    <div class="circle-txt">
-                        <div class="circle-1">
-                            <h3>8H</h3>
-                        </div>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed unde recusandae in officia deleniti expedita. Aliquam quasi laboriosam eveniet velit itaque est fugiat blanditiis, quae esse voluptas. Amet, magnam ducimus.
-                        </p>
-                    </div>
-                </div>
+    <footer class="container">
+        <span class="blur"></span>
+        <span class="blur"></span>
+        <div class="column">
+            <div class="logo">
+                <img src="./Logo5.jpg">
             </div>
-        </section>
-
-
-        <section class="general g2 container">
-            <h2>Nuestro equipo</h2>
-            <div class="general-content">
-    
-                <div class="general-4 txt">
-                    <h3>Leidy Laura Cañas Naranjo</h3>
-                </div>
-                <div class="general-5 txt">
-                    <h3>Alexandra Rodriguez Agudelo</h3>
-                </div>
-                <div class="general-6 txt">
-                    <h3>Samuel Brand Gaviria</h3>
-                </div>
-                <div class="general-7 txt">
-                    <h3>Juan Pablo Montoya Restrepo</h3>
-                </div>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            </p>
+            <div class="socials">
+                <a href="#"><i class="ri-youtube-line"></i></a>
+                <a href="#"><i class="ri-instagram-line"></i></a>
+                <a href="#"><i class="ri-twitter-line"></i></a>
             </div>
-            </section>
+        </div>
+    </footer>
 
-
-            <section class="info-2">
-                <div class="info-content container">
-                    <h2>Testimonios</h2>
-                    <div class="testi">
-
-                        <div class="testi-left">
-                            <div class="testi-txt">
-                                <img src="images/t1.png" alt="">
-                                <h3>lorem</h3>
-                                <p>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero maiores consectetur pariatur tenetur nobis deserunt non error corporis. Architecto quae quod maxime eos. Repudiandae eius impedit nulla doloremque, est quas.
-                                </p>
-                            </div>
-                            <div class="testi-txt">
-                                <img src="images/t2.png" alt="">
-                                <h3>lorem</h3>
-                                <p>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero maiores consectetur pariatur tenetur nobis deserunt non error corporis. Architecto quae quod maxime eos. Repudiandae eius impedit nulla doloremque, est quas.
-                                </p>
-                            </div>
-
-                        </div>
-                        <div class="testi-right">
-                            <div class="testi-txt">
-                                <img src="images/t3.png" alt="">
-                                <h3>lorem</h3>
-                                <p>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero maiores consectetur pariatur tenetur nobis deserunt non error corporis. Architecto quae quod maxime eos. Repudiandae eius impedit nulla doloremque, est quas.
-                                </p>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-
-
-            <footer class="footer container">
-
-                <h2>Contacto</h2>
-
-                <form>
-                    <input class="campo" type="text" placeholder="Nombre">
-                    <input class="campo" type="email" placeholder="Email">
-                    <input type="submit" class="btn-2" value="Enviar">
-                </form>
-                <div class="footer-txt">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis officia eum</p>
-                </div>
-            </footer>
-
+    <script src="script.js"></script>
 </body>
+
 </html>
