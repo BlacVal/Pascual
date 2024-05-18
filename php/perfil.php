@@ -28,19 +28,17 @@ if (isset($_POST['buscar'])) {
     $resultado = mysqli_stmt_get_result($stmt);
 
     // Verificar si se encontró algún resultado
-// Verificar si se ha encontrado algún resultado
-if (mysqli_num_rows($resultado) > 0) {
-    // Guardar la información del usuario en la sesión como un array asociativo
-    $usuario = mysqli_fetch_assoc($resultado);
-    $_SESSION['usuario'] = $usuario;
-    $_SESSION['cedula'] = $cedula;
+    if (mysqli_num_rows($resultado) > 0) {
+        // Guardar la información del usuario en la sesión como un array asociativo
+        $usuario = mysqli_fetch_assoc($resultado);
+        $_SESSION['usuario'] = $usuario;
+        $_SESSION['cedula'] = $cedula;
 
-    // Guardar la contraseña sin cifrar en la sesión temporalmente
-    $_SESSION['contrasena_plana'] = $usuario['contrasena'];
-} else {
-    echo "<div class='message'>No se encontraron resultados para la cédula ingresada.</div>";
-}
-
+        // Guardar la contraseña sin cifrar en la sesión temporalmente
+        $_SESSION['contrasena_plana'] = $usuario['contrasena'];
+    } else {
+        echo "<div class='message'>No se encontraron resultados para la cédula ingresada.</div>";
+    }
 }
 
 // Verificar si se ha enviado el formulario de cambio de contraseña
@@ -115,80 +113,77 @@ mysqli_close($conexion);
     <link rel="stylesheet" href="/assets/css/perfil.css">
 </head>
 <body>
-    <center>
+    <div class="menu">
+        <ul>
+            <li><a href="#rename">See information</a></li>
+            <li><a href="#change-password">Change password  /  name</a></li>
+            <li><a href="#view-info">#####</a></li>
+        </ul>
+    </div>
     <div class="container">
-        <div class="profile-box">
-            <h1>Mi Perfil</h1>
-            <div class="search-form">
-                <form method="POST">
-                    <label for="cedula">Cédula o Tarjeta de Identidad:</label>
-                    <input type="text" name="cedula" id="cedula" required>
-                    <button type="submit" name="buscar">Buscar</button>
+        <div id="rename" class="content-section">
+            <div class="profile-box">
+                <h1>Mi Perfil</h1>
+                <div class="search-form">
+                    <form method="POST">
+                        <label for="cedula">Cédula o Tarjeta de Identidad:</label>
+                        <input type="text" name="cedula" id="cedula" required>
+                        <button type="submit" name="buscar">Buscar</button>
+                    </form>
+                </div>
+            </div>
+            <div class="info-box">
+                <?php
+                // Verificar si se ha encontrado información del usuario
+                if (isset($_SESSION['usuario']) && is_array($_SESSION['usuario'])) {
+                    $fila = $_SESSION['usuario'];
+                    echo "<h2>Información del Perfil</h2>";
+                    echo "<p>Nombre: " . htmlspecialchars($fila["usuario"]) . "</p>";
+                    echo "<p>Email: " . htmlspecialchars($fila["correo"]) . "</p>";
+                    if (isset($_SESSION['contrasena_plana'])) {
+                        echo "<p>Contraseña: <span id='password'>*****</span> <button onclick='togglePasswordVisibility()'>Mostrar</button></p>";
+                    } else {
+                        echo "<p>Contraseña: ***** (oculta)</p>";
+                    }
+                } else {
+                    echo "<p>No se encontró información del perfil.</p>";
+                }
+                ?>
+            </div>
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        </div>
+        <div id="change-password" class="content-section">
+            <div class="change-forms">
+                <!-- Formulario para cambiar la contraseña -->
+                <form method="POST" class="change-form">
+                    <h2>Cambiar contraseña</h2>
+                    <input type="password" name="nueva_contraseña" placeholder="Nueva Contraseña" required>
+                    <input type="password" name="confirmar_contraseña" placeholder="Confirmar Contraseña" required>
+                    <button type="submit" name="cambiar_contraseña">Cambiar Contraseña</button>
                 </form>
+                <br><br><br><br><br><br><br><br><br><br>
+                <!-- Formulario para cambiar el nombre de usuario -->
+                <?php if (isset($_SESSION['cedula'])): ?>
+                <form method="POST" class="change-form">
+                    <h2>Cambiar Nombre de Usuario</h2>
+                    <label for="nuevo_nombre">Nuevo Nombre de Usuario:</label>
+                    <input type="text" name="nuevo_nombre" id="nuevo_nombre" required>
+                    <button type="submit" name="cambiar_nombre">Cambiar Nombre de Usuario</button>
+                </form>
+                <?php endif; ?>
             </div>
         </div>
-        <div class="info-box">
-        <?php
-// Verificar si se ha encontrado información del usuario
-if (isset($_SESSION['usuario']) && is_array($_SESSION['usuario'])) {
-    $fila = $_SESSION['usuario'];
-    echo "<h2>Información del Perfil</h2>";
-    echo "<p>Nombre: " . htmlspecialchars($fila["usuario"]) . "</p>";
-    echo "<p>Email: " . htmlspecialchars($fila["correo"]) . "</p>";
-    if (isset($_SESSION['contrasena_plana'])) {
-        echo "<p>Contraseña: <span id='password'>*****</span> <button onclick='togglePasswordVisibility()'>Mostrar</button></p>";
-    } else {
-        echo "<p>Contraseña: ***** (oculta)</p>";
-    }
-} else {
-    echo "<p>No se encontró información del perfil.</p>";
-}
-?>
-</div>
-        <div class="change-forms">
-            <!-- Formulario para cambiar la contraseña -->
-            <form method="POST" class="change-form">
-                <h2>Cambiar contraseña</h2>
-                <input type="password" name="nueva_contraseña" placeholder="Nueva Contraseña" required>
-                <input type="password" name="confirmar_contraseña" placeholder="Confirmar Contraseña" required>
-                <button type="submit" name="cambiar_contraseña">Cambiar Contraseña</button>
-            </form>
-
-            <!-- Formulario para cambiar el nombre de usuario -->
-            <?php if (isset($_SESSION['cedula'])): ?>
-            <form method="POST" class="change-form">
-                <h2>Cambiar Nombre de Usuario</h2>
-                <label for="nuevo_nombre">Nuevo Nombre de Usuario:</label>
-                <input type="text" name="nuevo_nombre" id="nuevo_nombre" required>
-                <button type="submit" name="cambiar_nombre">Cambiar Nombre de Usuario</button>
-            </form>
-            <?php endif; ?>
+        <div id="view-info" class="content-section">
+            <!-- Aquí se puede agregar cualquier contenido adicional que desees mostrar -->
         </div>
     </div>
 
     <footer>
         <a href="#search-form">Buscar</a> |
-        <a href="#change-forms">Cambiar Contraseña/Nombre</a> |
-        <a href="#profile-info">Información de Perfil</a> |
-        <a href="/inicio.php">Volver al inicio</a>
+        <a href="#change-password">Change password  /  name</a> |
+        <a href="#rename">See information</a> |
+        <a href="/inicio.php">return to top of page</a>
     </footer>
-    </center>
-<script>
-    function togglePasswordVisibility() {
-        var passwordField = document.getElementById('password');
-        var button = event.target;
-
-        if (passwordField.textContent === '*****') {
-            passwordField.textContent = '<?php echo isset($_SESSION['contrasena_plana']) ? htmlspecialchars($_SESSION['contrasena_plana']) : ""; ?>';
-            button.textContent = 'Ocultar';
-        } else {
-            passwordField.textContent = '*****';
-            button.textContent = 'Mostrar';
-        }
-    }
-</script>
-
-
-    <script src="perfil.js"></script>
+    <script src="/assets/js/perfil.js"></script>
 </body>
 </html>

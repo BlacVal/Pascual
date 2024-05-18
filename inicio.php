@@ -73,7 +73,7 @@ if(isset($_SESSION['usuario'])){
                 <p>
                 In the following books, you will have a lot of information that will be useful to you.
                 </p>
-                <a href="./php/buscar_libros.php">Join Now <i class="ri-arrow-right-line"></i></a>
+                <a href="./php/buscar_libros.php">go now <i class="ri-arrow-right-line"></i></a>
                 </center>
             </div>
             <div class="card">
@@ -83,7 +83,7 @@ if(isset($_SESSION['usuario'])){
                 <p>
                 Contact us to clarify your doubts, what books are available and more.
                 </p>
-                <a href="./libro.php">Join Now <i class="ri-arrow-right-line"></i></a>
+                <a href="./libro.php">go now <i class="ri-arrow-right-line"></i></a>
                 </center>
             </div>
             <div class="card">
@@ -93,7 +93,7 @@ if(isset($_SESSION['usuario'])){
                 <p>
                 Our inspiration to do this project, what was it?
                 </p>
-                <a href="#">Join Now <i class="ri-arrow-right-line"></i></a>
+                <a href="#">go now <i class="ri-arrow-right-line"></i></a>
                 </center>
             </div>
             <div class="card">
@@ -103,7 +103,7 @@ if(isset($_SESSION['usuario'])){
                 <p>
                 Our work team 
                 </p>
-                <a href="#">Join Now <i class="ri-arrow-right-line"></i></a>
+                <a href="#">go Now <i class="ri-arrow-right-line"></i></a>
                 </center>
             </div>
         </div>

@@ -30,4 +30,54 @@ document.addEventListener("DOMContentLoaded", function() {
             event.preventDefault(); // Evitar que se envíe el formulario
         }
     });
+
+    // Agregar event listener para el menú de navegación
+    document.querySelectorAll('.menu a').forEach(function(link) {
+        link.addEventListener('click', function(event) {
+            event.preventDefault();
+            var target = this.getAttribute('href');
+            var element = document.querySelector(target);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+});
+document.querySelectorAll('.menu a').forEach(function(link) {
+    link.addEventListener('click', function(event) {
+        event.preventDefault();
+        var target = this.getAttribute('href');
+        var element = document.querySelector(target);
+        if (element) {
+            // Oculta todas las secciones
+            document.querySelectorAll('.section').forEach(function(section) {
+                section.classList.remove('active');
+            });
+            // Muestra solo la sección seleccionada
+            element.classList.add('active');
+        }
+    });
+});
+function togglePasswordVisibility() {
+    var passwordField = document.getElementById('password');
+    var button = event.target;
+
+    if (passwordField.textContent === '*****') {
+        passwordField.textContent = '<?php echo isset($_SESSION['contrasena_plana']) ? htmlspecialchars($_SESSION['contrasena_plana']) : ""; ?>';
+        button.textContent = 'Ocultar';
+    } else {
+        passwordField.textContent = '*****';
+        button.textContent = 'Mostrar';
+    }
+}
+
+document.querySelectorAll('.menu a').forEach(function(link) {
+    link.addEventListener('click', function(event) {
+        event.preventDefault();
+        var target = this.getAttribute('href');
+        var element = document.querySelector(target);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+        }
+    });
 });
