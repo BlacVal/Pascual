@@ -140,11 +140,7 @@ mysqli_close($conexion);
                     echo "<h2>Información del Perfil</h2>";
                     echo "<p>Nombre: " . htmlspecialchars($fila["usuario"]) . "</p>";
                     echo "<p>Email: " . htmlspecialchars($fila["correo"]) . "</p>";
-                    if (isset($_SESSION['contrasena_plana'])) {
-                        echo "<p>Contraseña: <span id='password'>*****</span> <button onclick='togglePasswordVisibility()'>Mostrar</button></p>";
-                    } else {
-                        echo "<p>Contraseña: ***** (oculta)</p>";
-                    }
+
                 } else {
                     echo "<p>No se encontró información del perfil.</p>";
                 }

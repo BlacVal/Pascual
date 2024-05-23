@@ -1,0 +1,274 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    outline: none;
+    border: none;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #18181B;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+#cerrar {
+    cursor: pointer;
+    float: right;
+    font-weight: bold;
+    font-size: 20px;
+    color: #fff;
+}
+
+.carrito, .cart-icon {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+
+.cart-modal, #cart-modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #27272a;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+    color: #fff;
+    border-radius: 15px;
+    text-align: center;
+}
+
+button {
+    background-color: #1d4ed8;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #1e40af;
+}
+
+.categorias {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.categoria {
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+summary {
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    background-color: #27272a;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+    color: #ccc;
+    text-align: center;
+    padding: 20px 0;
+}
+
+summary:hover {
+    background-color: #323232;
+}
+
+#cart-modal ul {
+    padding: 0;
+    list-style: none;
+}
+
+.book {
+    border: 1px solid #ccc;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    display: inline-block;
+    max-width: 200px;
+    border-radius: 10px;
+    background-color: #27272a;
+    color: #fff;
+}
+
+.book img {
+    max-width: 100px;
+    max-height: 150px;
+    margin-bottom: 10px;
+}
+
+/* Nuevo estilo para el menú */
+nav {
+    max-width: 1200px;
+    margin: auto;
+    padding: 2rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.nav-logo {
+    max-width: 100px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+
+.link a {
+    position: relative;
+    padding-bottom: 0.75rem;
+    color: #fff;
+}
+
+.link a::after {
+    content: "";
+    position: absolute;
+    height: 2px;
+    width: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #1d4ed8;
+    transition: all 0.3s ease;
+}
+
+.link a:hover::after {
+    width: 70%;
+}
+
+.menu-item {
+    position: relative;
+}
+
+.submenu {
+    display: none;
+    position: absolute;
+    top: 100%; /* Coloca el submenú justo debajo del elemento principal */
+    left: 0;
+    background-color: #1d4ed8; /* Color de fondo para el submenú */
+    padding: 0;
+    list-style: none;
+    margin: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px); /* Para animar desde arriba */
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+}
+
+.menu-item:hover .submenu {
+    display: block; /* Asegúrate de que el menú sea accesible para la animación */
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.submenu li {
+    padding: 0;
+}
+
+.submenu .btn {
+    padding: 0.5rem 1rem; /* Ajusta el padding si es necesario */
+    background-color: #1d4ed8; /* Mismo color de fondo que el botón principal */
+    width: 100%;
+    text-align: left; /* Alinea el texto a la izquierda */
+}
+
+.submenu .btn a {
+    color: #fff;
+}
+
+.libros-disponibles {
+    background-color: #27272a;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 800px;
+    color: #fff;
+}
+
+.libros-disponibles h2 {
+    color: #1d4ed8;
+    margin-bottom: 20px;
+}
+
+.libros-disponibles ul {
+    list-style: none;
+    padding: 0;
+}
+
+.libros-disponibles ul li {
+    margin-bottom: 10px;
+}
+
+.libros-disponibles ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+.libros-disponibles ul li a:hover {
+    color: #1e40af;
+}
+
+@media (width < 900px) {
+    .nav-links {
+        display: none;
+    }
+    header {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    header .image {
+        grid-area: 1/1/2/2;
+    }
+    .features {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .pricing {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    footer {
+        grid-template-columns: 1fr 200px;
+    }
+}
+
+@media (width < 600px) {
+    header .image::before {
+        display: none;
+    }
+
+    .features {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .pricing {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    footer {
+        grid-template-columns: 1fr 150px;
+    }
+}

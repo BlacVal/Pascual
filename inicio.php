@@ -12,7 +12,7 @@ if(isset($_SESSION['usuario'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
     <title>Library Loan Control</title>
 </head>
 
@@ -21,14 +21,14 @@ if(isset($_SESSION['usuario'])){
 <nav>
     <div class="nav-logo">
         <a href="#">
-            <img src="./Logo5.jpg">
+            <img src="/assets/imagess/create-a-logo-for-a-book-lending-website-with-the--xUGYRNzKTsSZX7EX5FrmTA-Tu_1KVIRQTC8_jUSZEWxxw.jpeg">
         </a>
     </div>
 
     <ul class="nav-links">
         <li class="link"><a href="./inicio.php">Home</a></li>
         <li id="link1" class="link"><a href="./php/buscar_libros.php">books</a></li>
-        <li id="link2" class="link"><a href="./libro.php">loans</a></li>
+        <li id="link2" class="link"><a href="./php/libro.php">loans</a></li>
         <li id="link3" class="link"><a href="#">About</a></li>
     </ul>
 
@@ -50,7 +50,7 @@ if(isset($_SESSION['usuario'])){
             <span class="blur"></span>
             <span class="blur"></span>
             <h4>build your knowledge like a professional</h4>
-            <H1>Hi, I'm <span>Samuel</span>, Web Developer</H1>
+            <H1>Hi, we are <span>Library Loan Control</span>, Web Developers</H1>
             <p>
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus rem eos aliquid quo rerum
                 temporibus ipsum distinctio numquam ut omnis placeat, nam sint atque quos dolorem laborum? Rerum, esse
@@ -59,7 +59,7 @@ if(isset($_SESSION['usuario'])){
             <button class="btn">Get Started</button>
         </div>
         <div class="image">
-            <img src="./images/header.png">
+            <img src="./assets/imagess/header.png">
         </div>
     </header>
 
@@ -127,7 +127,7 @@ if(isset($_SESSION['usuario'])){
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="./assets/js/scripts.js"></script>
 </body>
 
 </html>
