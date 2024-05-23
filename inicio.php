@@ -83,7 +83,7 @@ if(isset($_SESSION['usuario'])){
                 <p>
                 Contact us to clarify your doubts, what books are available and more.
                 </p>
-                <a href="./libro.php">go now <i class="ri-arrow-right-line"></i></a>
+                <a href="./php/libro.php">go now <i class="ri-arrow-right-line"></i></a>
                 </center>
             </div>
             <div class="card">
