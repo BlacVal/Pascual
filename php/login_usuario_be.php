@@ -1,28 +1,28 @@
 <?php
-
 session_start();
+include 'conexion_be.php';
 
-    include 'conexion_be.php';
+$correo = $_POST['correo'];
+$contrasena = $_POST['contrasena'];
 
-    $correo = $_POST['correo'];
-    $contrasena = $_POST['contrasena'];
-    // cifrado $contrasena = hash('sha512', $contrasena);.
+$query = "SELECT id, usuario, role FROM usuarios WHERE correo='$correo' AND contrasena='$contrasena'";
+$result = mysqli_query($conexion, $query);
 
-
-    $validar_login = mysqli_query($conexion, "SELECT * FROM usuarios WHERE correo= '$correo'
-    and contrasena ='$contrasena'");
-
-    if(mysqli_num_rows($validar_login) > 0){
-        $_SESSION["usuario"] = $correo;
-        header("location: ../inicio.php");
-        exit;
-    }else{
-        echo'
+if (mysqli_num_rows($result) == 1) {
+    $row = mysqli_fetch_assoc($result);
+    $_SESSION['user_id'] = $row['id'];
+    $_SESSION['usuario'] = $row['usuario'];
+    $_SESSION['role'] = $row['role'];
+    header("Location: ../inicio.php");
+} else {
+    echo '
         <script>
-            alert("El usuario no existe, por favor verifique los datos introducidos");</script>';
-            header ("location: ../index.php");
+            alert("Usuario o contraseña incorrectos.");
+            window.location = "../index.php";
+        </script>
+    ';
+}
 
-        exit;
-    }
-
+mysqli_free_result($result);
+mysqli_close($conexion);
 ?>

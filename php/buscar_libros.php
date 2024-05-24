@@ -1,20 +1,27 @@
 <?php
-// Configuración de la base de datos
+session_start();
+if (!isset($_SESSION['usuario'])) {
+    header("Location: index.php");
+    exit();
+}
+
+if (!isset($_SESSION['role'])) {
+    $_SESSION['role'] = 'user'; // Default role if not set
+}
+
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "login_register_db";
 
-// Crear conexión a la base de datos
 $mysqli = new mysqli($servername, $username, $password, $dbname);
 
-// Verificar conexión
 if ($mysqli->connect_error) {
     die("Error de conexión: " . $mysqli->connect_error);
 }
 
-// Manejo de las operaciones CRUD
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action'])) {
+// Manejo de las operaciones CRUD para admin
+if ($_SESSION['role'] == 'admin' && $_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action'])) {
     if ($_POST['action'] == 'add') {
         $libro = $_POST['libro'];
         $estado = $_POST['estado'];
@@ -36,6 +43,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action'])) {
         $id = $_POST['id'];
 
         $stmt = $mysqli->prepare("DELETE FROM libros WHERE id=?");
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $stmt->close();
+    } elseif ($_POST['action'] == 'prestar') {
+        $id = $_POST['id'];
+
+        $stmt = $mysqli->prepare("UPDATE libros SET Estado='Prestado' WHERE id=?");
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $stmt->close();
+    } elseif ($_POST['action'] == 'devolver') {
+        $id = $_POST['id'];
+
+        $stmt = $mysqli->prepare("UPDATE libros SET Estado='Disponible' WHERE id=?");
         $stmt->bind_param("i", $id);
         $stmt->execute();
         $stmt->close();
@@ -62,33 +83,7 @@ $mysqli->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de Libros</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-
-        .container {
-            width: 80%;
-            margin: 50px auto;
-            text-align: center;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        table, th, td {
-            border: 1px solid black;
-            padding: 8px;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
+    <link rel="stylesheet" href="/assets/css/libros.css">
 </head>
 <body>
     <div class="container">
@@ -104,7 +99,6 @@ $mysqli->close();
                         <th>ID</th>
                         <th>Libro</th>
                         <th>Estado</th>
-                        <th>Imagen</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -115,18 +109,31 @@ $mysqli->close();
                             <td><?php echo $row["libro"]; ?></td>
                             <td><?php echo $row["Estado"]; ?></td>
                             <td>
+                                <?php if ($_SESSION['role'] == 'admin'): ?>
+                                    <form action="" method="post" style="display:inline;">
+                                        <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                                        <input type="hidden" name="action" value="delete">
+                                        <button type="submit">Borrar</button>
+                                    </form>
+                                    <button onclick="editBook(<?php echo htmlspecialchars(json_encode($row)); ?>)">Editar</button>
+                                <?php endif; ?>
                                 <form action="" method="post" style="display:inline;">
                                     <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
-                                    <input type="hidden" name="action" value="delete">
-                                    <button type="submit">Borrar</button>
+                                    <input type="hidden" name="action" value="prestar">
+                                    <button type="submit">Prestar</button>
                                 </form>
-                                <button onclick="editBook(<?php echo htmlspecialchars(json_encode($row)); ?>)">Editar</button>
+                                <form action="" method="post" style="display:inline;">
+                                    <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                                    <input type="hidden" name="action" value="devolver">
+                                    <button type="submit">Devolver</button>
+                                </form>
                             </td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
             </table>
         </div>
+        <?php if ($_SESSION['role'] == 'admin'): ?>
         <div>
             <h2>Agregar/Actualizar Libro</h2>
             <form action="" method="post">
@@ -139,14 +146,16 @@ $mysqli->close();
                 <button type="submit">Guardar</button>
             </form>
         </div>
+        <?php endif; ?>
     </div>
-    <script>
-        function editBook(book) {
-            document.getElementById('book-id').value = book.id;
-            document.getElementById('libro').value = book.libro;
-            document.getElementById('estado').value = book.Estado;
-            document.getElementById('form-action').value = 'update';
-        }
-    </script>
+<script src="/assets/js/libros.js"></script>
+<script>
+    function editBook(book) {
+        document.getElementById('book-id').value = book.id;
+        document.getElementById('libro').value = book.libro;
+        document.getElementById('estado').value = book.Estado;
+        document.getElementById('form-action').value = 'update';
+    }
+</script>
 </body>
 </html>
