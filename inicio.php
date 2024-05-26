@@ -114,7 +114,7 @@ if(isset($_SESSION['usuario'])){
         <span class="blur"></span>
         <div class="column">
             <div class="logo">
-                <img src="./Logo5.jpg">
+                <img src="/assets/imagess/create-a-logo-for-a-book-lending-website-with-the--xUGYRNzKTsSZX7EX5FrmTA-Tu_1KVIRQTC8_jUSZEWxxw.jpeg">
             </div>
             <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.

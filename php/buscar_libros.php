@@ -86,6 +86,17 @@ $mysqli->close();
     <link rel="stylesheet" href="/assets/css/libros.css">
 </head>
 <body>
+<nav>
+        <div class="nav-logo">
+
+        </div>
+        <ul class="nav-links">
+        <li class="link"><a href="/inicio.php">Home</a></li>
+        <li id="link1" class="link"><a href="/php/buscar_libros.php">books</a></li>
+        <li id="link2" class="link"><a href="/php/libro.php">loans</a></li>
+        <li id="link3" class="link"><a href="#">About</a></li>
+    </ul>
+    </nav>
     <div class="container">
         <h1>Buscar Libros</h1>
         <form action="" method="get">

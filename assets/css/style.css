@@ -19,7 +19,7 @@ a{
 
 body{
     font-family: 'Poppins', sans-serif;
-    background-color: #18181B;
+    background-color: #4A5B6A;
 }
 
 nav{
@@ -56,7 +56,7 @@ nav{
     width: 0;
     bottom: 0;
     left: 0;
-    background-color: #1d4ed8;
+    background-color: #5483B3;
     transition: all 0.3s ease;
 }
 
@@ -68,14 +68,14 @@ nav{
     padding: 1rem 2rem;
     font-size: 1rem;
     color: #fff;
-    background-color: #1d4ed8;
+    background-color: #5483B3;
     border-radius: 5px;
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
 .btn:hover{
-    background-color: #1e40af;
+    background-color: #5483B3;
 }
 
 .container{
@@ -86,7 +86,7 @@ nav{
 
 .blur{
     position: absolute;
-    box-shadow: 0 0 1000px 50px #1d4ed8;
+    box-shadow: 0 0 1000px 50px #5483B3;
     z-index: -100;
 }
 
@@ -163,7 +163,7 @@ section .header{
 }
 
 .features .card{
-    background-color: #27272a;
+    background-color: #728495;
     padding: 1rem;
     border: 2px solid transparent;
     border-radius: 15px;
@@ -177,7 +177,7 @@ section .header{
 
 .features .card span{
     display: inline-block;
-    background-color: #1e40af;
+    background-color: #5483B3;
     padding: 2px 9px;
     margin-bottom: 1rem;
     font-size: 1.75rem;
@@ -203,7 +203,7 @@ section .header{
 }
 
 .features .card a:hover{
-    color: #1e40af;
+    color: #5483B3;
 }
 /* Estilos para el submenú */
 .menu-item {
@@ -215,7 +215,7 @@ section .header{
     position: absolute;
     top: 100%; /* Coloca el submenú justo debajo del elemento principal */
     left: 0;
-    background-color: #1d4ed8; /* Color de fondo para el submenú */
+    background-color: #5483B3; /* Color de fondo para el submenú */
     padding: 0;
     list-style: none;
     margin: 0;
@@ -238,7 +238,7 @@ section .header{
 
 .submenu .btn {
     padding: 0.5rem 1rem; /* Ajusta el padding si es necesario */
-    background-color: #1d4ed8; /* Mismo color de fondo que el botón principal */
+    background-color: #5483B3; /* Mismo color de fondo que el botón principal */
     width: 100%;
     text-align: left; /* Alinea el texto a la izquierda */
 }
@@ -353,8 +353,8 @@ footer .column .socials a{
 
 footer .column .socials a:hover{
     color: #fff;
-    background-color: #1d4ed8;
-    border-color: #1d4ed8;
+    background-color: #5483B3;
+    border-color: #5483B3;
 }
 
 footer .column h4{
@@ -372,7 +372,7 @@ footer .column > a{
 }
 
 footer .column > a:hover{
-    color: #1d4ed8;
+    color: #5483B3;
 }
 
 .copyright{

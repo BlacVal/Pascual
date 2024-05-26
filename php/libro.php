@@ -12,19 +12,14 @@
    
     <nav>
         <div class="nav-logo">
-            <img src="logo.png" alt="Logo">
+
         </div>
         <ul class="nav-links">
-            <li class="link"><a href="/inicio.php">Home</a></li>
-            <li class="link menu-item">
-                <a href="#">Categorías</a>
-                <ul class="submenu">
-                    <li><a href="./buscar_libros.php">books</a></li>
-                    <li><a href="./libro.php">loans</a></li>
-                </ul>
-            </li>
-            <li class="link"><a href="#">About</a></li>
-        </ul>
+        <li class="link"><a href="/inicio.php">Home</a></li>
+        <li id="link1" class="link"><a href="/php/buscar_libros.php">books</a></li>
+        <li id="link2" class="link"><a href="/php/libro.php">loans</a></li>
+        <li id="link3" class="link"><a href="#">About</a></li>
+    </ul>
     </nav>
     
     <section class="libros-disponibles">
