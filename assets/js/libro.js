@@ -28,3 +28,12 @@ function mostrarCarrito() {
   const modal = document.getElementById('cart-modal');
   modal.style.display = 'block';
 }
+document.addEventListener('DOMContentLoaded', function () {
+  const btnDescargas = document.getElementById('btn__descargas');
+  const librosDescargables = document.getElementById('libros-descargables');
+
+  btnDescargas.addEventListener('click', function () {
+      librosDescargables.style.maxHeight = librosDescargables.scrollHeight + 'px';
+      btnDescargas.style.display = 'none';
+  });
+});

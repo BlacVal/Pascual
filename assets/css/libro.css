@@ -115,7 +115,6 @@ summary:hover {
     margin-bottom: 10px;
 }
 
-/* Nuevo estilo para el menú */
 nav {
     max-width: 1200px;
     margin: auto;
@@ -165,20 +164,20 @@ nav {
 .submenu {
     display: none;
     position: absolute;
-    top: 100%; /* Coloca el submenú justo debajo del elemento principal */
+    top: 100%;
     left: 0;
-    background-color: #1d4ed8; /* Color de fondo para el submenú */
+    background-color: #1d4ed8;
     padding: 0;
     list-style: none;
     margin: 0;
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-10px); /* Para animar desde arriba */
+    transform: translateY(-10px);
     transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
 }
 
 .menu-item:hover .submenu {
-    display: block; /* Asegúrate de que el menú sea accesible para la animación */
+    display: block;
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
@@ -189,10 +188,10 @@ nav {
 }
 
 .submenu .btn {
-    padding: 0.5rem 1rem; /* Ajusta el padding si es necesario */
-    background-color: #1d4ed8; /* Mismo color de fondo que el botón principal */
+    padding: 0.5rem 1rem;
+    background-color: #1d4ed8;
     width: 100%;
-    text-align: left; /* Alinea el texto a la izquierda */
+    text-align: left;
 }
 
 .submenu .btn a {
@@ -234,41 +233,39 @@ nav {
     color: #1e40af;
 }
 
-@media (width < 900px) {
-    .nav-links {
-        display: none;
-    }
-    header {
-        grid-template-columns: repeat(1, 1fr);
-    }
-    header .image {
-        grid-area: 1/1/2/2;
-    }
-    .features {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    .pricing {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    footer {
-        grid-template-columns: 1fr 200px;
-    }
+.lista-libros details {
+    background-color: #4A5B6A;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    padding: 10px;
 }
 
-@media (width < 600px) {
-    header .image::before {
-        display: none;
-    }
+.lista-libros details summary {
+    color: #ccc;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 5px;
+}
 
-    .features {
-        grid-template-columns: repeat(1, 1fr);
-    }
+.lista-libros ul {
+    padding: 10px;
+    list-style: none;
+}
 
-    .pricing {
-        grid-template-columns: repeat(1, 1fr);
-    }
+.lista-libros ul li {
+    margin-bottom: 5px;
+}
 
-    footer {
-        grid-template-columns: 1fr 150px;
-    }
+.lista-libros ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.lista-libros ul li a:hover {
+    text-decoration: underline;
+}
+#libros-descargables {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
 }

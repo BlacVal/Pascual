@@ -4,21 +4,30 @@ $libro = $_GET['libro'];
 // Lógica para obtener el contenido del libro y la ruta del archivo PDF según el parámetro pasado
 
 switch ($libro) {
-    case 'matematicas10':
-        $titulo = 'Matemáticas 10°';
-        $contenido = 'Contenido del libro de Matemáticas 10°...';
-        $archivo = "./libros/Matematicas10.pdf";
+    case 'Programación 11°':
+        $titulo = 'Programación 11°';
+        $contenido = 'Contenido del libro de HTML Y CSS 10°...';
+        $archivo = "/libros/HTML Y CSS.pdf";
         break;
-    case 'matematicas11':
-        $titulo = 'Matemáticas 11°';
-        $contenido = 'Contenido del libro de Matemáticas 11°...';
-        $archivo = "./libros/Matematicas11.pdf";
-        break;
-        case 'matematicas11':
-            $titulo = 'Matemáticas 11°';
-            $contenido = 'Contenido del libro de Matemáticas 11°...';
-            $archivo = "./libros/HTML Y CSS.PDF";
+        case 'Programación 11°':
+            $titulo = 'Programacion 11°';
+            $contenido = 'Contenido del libro de JavaScript 10°...';
+            $archivo = "/libros/javaScript.pdf";
             break;
+            case 'Programación 11°':
+                $titulo = 'Programacion 11°';
+                $contenido = 'Contenido del libro de Logica y Diseño 11°...';
+                $archivo = "/libros/Logica y Diseño.pdf";
+                break;
+                case 'Programación 11°':
+                    $titulo = 'Programacion 11°';
+                    $contenido = 'Contenido del libro de Bases de datos 11°...';
+                    $archivo = "/libros/Bases-de-Datos.pdf";
+                    break;
+                    case 'Programación 11°':
+                        $titulo = 'Programacion 11°';
+                        $contenido = 'Contenido del libro de Servicios de backend y frontend 11°...';
+                        $archivo = "/libros/Backend y frontend.pdf";
     // Agrega más casos según sea necesario
 }
 

@@ -141,7 +141,7 @@ section .header{
     padding: 20px;
 }
 h1, h2 {
-    color: #d35400;
+    color: #ccc;
     text-align: center;
 }
 form {
@@ -155,13 +155,13 @@ input[type="text"], button {
     border-radius: 5px;
 }
 button {
-    background-color: #d35400;
+    background-color: #5483B3;
     color: white;
     border: none;
     cursor: pointer;
 }
 button:hover {
-    background-color: #e67e22;
+    background-color: #5483B3;
 }
 table {
     width: 100%;
@@ -174,7 +174,7 @@ th, td {
     text-align: left;
 }
 th {
-    background-color: #d35400;
+    background-color: #5483B3;
     color: white;
 }
 td form {

@@ -26,37 +26,36 @@
         <h2>Libros</h2>
         <div class="lista-libros">
             <details>
-                <summary>Matemáticas</summary>
-                <ul>
-                    <li><a href="./libros/Matematicas10.pdf">Matemáticas 10°</a></li>
-                    <li><a href="#">Matemáticas 11°</a></li>
-                    <!-- Agrega más libros si es necesario -->
-                </ul>
-            </details>
-            <details>
                 <summary>Programación</summary>
                 <ul>
-                    <li><a href="./libros/HTML Y CSS.pdf">HTML Y CSS</a></li>
-                    <li><a href="#">JavaScript</a></li><br>
-                    <li><a href="#">Diseño</a></li>
-                    <li><a href="#">Base de datos</a></li>
-                    <li><a href="#">Servicio de backend</a></li>
+                    <a>HTML Y CSS</a><br>
+                    <a>JavaScript</a><br>
+                    <a>Diseño</a><br>
+                    <a>Base de datos</a><br>
+                    <a>Servicio de backend y Frontend</a>
                     <!-- Agrega más libros si es necesario -->
                 </ul>
             </details>
             <!-- Agrega más categorías de libros si es necesario -->
         </div>
-    </section>
-    
-    <section class="libros-disponibles">
+        <div id="libros-descargables" class="libros-disponibles">
         <h2>Libros Disponibles para Descargar</h2>
-        <ul>
-            <li><a href="./libros/Matematicas10.pdf">Matemáticas 10°</a></li>
-            <li><a href="#">Matemáticas 11°</a></li>
-            <li><a href="./libros/HTML Y CSS.pdf">Programación 10°<br>(HTML Y CSS)</a></li>
-            <li><a href="#">Programación 11°</a></li>
-            <!-- Agrega más libros con sus respectivos enlaces -->
-        </ul>
+            <ul>
+                <li><a href="/libros/HTML Y CSS.pdf">Programación 10°<br>(HTML Y CSS)</a></li>
+                <li><a href="#">Programación 10°</a></li>
+                <li><a href="/libros/JavaScript.pdf">Programación 10°<br>(JavaScript)</a></li>
+                <li><a href="#">Programación 10°</a></li>
+                <br><br>
+                <li><a href="/libros/Logica y Diseño.pdf">Programación 11°<br>(Diseño)</a></li>
+                <li><a href="#">Programación 11°</a></li>
+                <li><a href="/libros/Bases-de-Datos.pdf">Programación 11°<br>(Bases de datos)</a></li>
+                <li><a href="#">Programación 11°</a></li>
+                <li><a href="/libros/Backend y frontend.pdf">Programación 11°<br>(Servicios de Backend y Frontend)</a></li>
+                <li><a href="#">Programación 11°</a></li>
+                <!-- Agrega más libros con sus respectivos enlaces -->
+            </ul>
+        </div>
+        <button id="btn__descargas">Descargas</button>
     </section>
     
     <script src="/assets/js/libro.js"></script>
