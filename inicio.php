@@ -41,6 +41,8 @@ if(isset($_SESSION['usuario'])){
                 <li><button class="btn"><a href="/php/logout.php">Sign off</a></button></li>
             </ul>
         </div>
+    <?php else: ?>
+        <button class="btn"><a href="./index.php">Log In</a></button>
     <?php endif; ?>
 </nav>
 

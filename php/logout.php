@@ -18,6 +18,6 @@ if (ini_get("session.use_cookies")) {
 session_destroy();
 
 // Redirigir al usuario de vuelta a la página de inicio de sesión
-header("location: ../index.php"); // Asegúrate de que la ruta sea correcta
+header("location: ../inicio.php"); // Asegúrate de que la ruta sea correcta
 exit();
 ?>
