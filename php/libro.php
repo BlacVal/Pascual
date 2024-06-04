@@ -1,3 +1,14 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['usuario'])) {
+    header("Location: ../index.php");
+    exit;
+}
+
+// Si el usuario está registrado, se muestra el contenido de la página restringida
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>

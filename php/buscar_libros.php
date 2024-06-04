@@ -1,7 +1,8 @@
 <?php
 session_start();
+
 if (!isset($_SESSION['usuario'])) {
-    header("Location: index.php");
+    header("Location: ../index.php");
     exit();
 }
 
@@ -9,16 +10,7 @@ if (!isset($_SESSION['role'])) {
     $_SESSION['role'] = 'user'; // Default role if not set
 }
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "login_register_db";
-
-$mysqli = new mysqli($servername, $username, $password, $dbname);
-
-if ($mysqli->connect_error) {
-    die("Error de conexión: " . $mysqli->connect_error);
-}
+include 'conexion_be.php'; // Asegúrate de incluir el archivo de conexión a la base de datos
 
 // Manejo de las operaciones CRUD para admin
 if ($_SESSION['role'] == 'admin' && $_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action'])) {
@@ -26,7 +18,7 @@ if ($_SESSION['role'] == 'admin' && $_SERVER['REQUEST_METHOD'] == 'POST' && isse
         $libro = $_POST['libro'];
         $estado = $_POST['estado'];
 
-        $stmt = $mysqli->prepare("INSERT INTO libros (libro, Estado) VALUES (?, ?)");
+        $stmt = $conexion->prepare("INSERT INTO libros (libro, Estado) VALUES (?, ?)");
         $stmt->bind_param("ss", $libro, $estado);
         $stmt->execute();
         $stmt->close();
@@ -35,28 +27,28 @@ if ($_SESSION['role'] == 'admin' && $_SERVER['REQUEST_METHOD'] == 'POST' && isse
         $libro = $_POST['libro'];
         $estado = $_POST['estado'];
 
-        $stmt = $mysqli->prepare("UPDATE libros SET libro=?, Estado=? WHERE id=?");
+        $stmt = $conexion->prepare("UPDATE libros SET libro=?, Estado=? WHERE id=?");
         $stmt->bind_param("ssi", $libro, $estado, $id);
         $stmt->execute();
         $stmt->close();
     } elseif ($_POST['action'] == 'delete') {
         $id = $_POST['id'];
 
-        $stmt = $mysqli->prepare("DELETE FROM libros WHERE id=?");
+        $stmt = $conexion->prepare("DELETE FROM libros WHERE id=?");
         $stmt->bind_param("i", $id);
         $stmt->execute();
         $stmt->close();
     } elseif ($_POST['action'] == 'prestar') {
         $id = $_POST['id'];
 
-        $stmt = $mysqli->prepare("UPDATE libros SET Estado='Prestado' WHERE id=?");
+        $stmt = $conexion->prepare("UPDATE libros SET Estado='Prestado' WHERE id=?");
         $stmt->bind_param("i", $id);
         $stmt->execute();
         $stmt->close();
     } elseif ($_POST['action'] == 'devolver') {
         $id = $_POST['id'];
 
-        $stmt = $mysqli->prepare("UPDATE libros SET Estado='Disponible' WHERE id=?");
+        $stmt = $conexion->prepare("UPDATE libros SET Estado='Disponible' WHERE id=?");
         $stmt->bind_param("i", $id);
         $stmt->execute();
         $stmt->close();
@@ -67,15 +59,13 @@ if ($_SESSION['role'] == 'admin' && $_SERVER['REQUEST_METHOD'] == 'POST' && isse
 $query = "SELECT id, libro, Estado FROM libros";
 $resultados = [];
 
-if ($result = $mysqli->query($query)) {
+if ($result = $conexion->query($query)) {
     while ($row = $result->fetch_assoc()) {
         $resultados[] = $row;
     }
     $result->free();
 }
-
-// Cerrar conexión
-$mysqli->close();
+$conexion->close();
 ?>
 <!DOCTYPE html>
 <html lang="es">
