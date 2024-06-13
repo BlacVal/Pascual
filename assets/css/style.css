@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
-*{
+* {
     padding: 0;
     margin: 0;
     outline: none;
@@ -8,21 +8,73 @@
     box-sizing: border-box;
 }
 
-img{
+img {
     width: 100%;
     display: flex;
 }
 
-a{
+a {
     text-decoration: none;
 }
 
-body{
-    font-family: 'Poppins', sans-serif;
-    background-color: #4A5B6A;
+/* Estilos por defecto (modo día) */
+body {
+    background-color: #EFE9E5;
+    color: #fff;
 }
 
-nav{
+/* Estilos base */
+a, .btn {
+    color: #333; /* Color por defecto para enlaces y botones (modo día) */
+    transition: color 0.3s ease, background-color 0.3s ease; /* Transiciones suaves */
+}
+
+/* Modo día */
+.day-mode {
+    background-color: #EFE9E5; /* Fondo claro para el modo día */
+    color: #333; /* Texto oscuro para el modo día */
+}
+
+.day-mode a, .day-mode .btn {
+    color: #333; /* Color de enlaces y botones en modo día */
+}
+
+.day-mode .text-content {
+    background-color: #333;
+    color: #333; /* Color del texto específico en modo día */
+}
+
+/* Modo noche */
+.night-mode {
+    background-color: #4A5B6A; /* Fondo oscuro para el modo noche */
+    color: #e6e6e6; /* Texto claro para el modo noche */
+}
+
+.night-mode a, .night-mode .btn {
+    color: #e6e6e6; /* Color de enlaces y botones en modo noche */
+}
+
+.night-mode .text-content {
+    background-color: #fff;
+    color: #fff; /* Color del texto específico en modo noche */
+}
+
+.night-mode .link a::after {
+    background-color: #e6e6e6; /* Línea inferior de enlaces en modo noche */
+}
+
+/* Inherencia de color para enlaces */
+.day-mode .link a, .night-mode .link a {
+    color: inherit; /* Heredar color del texto para los enlaces */
+}
+
+/* Efectos hover */
+a:hover, .btn:hover {
+    opacity: 0.8; /* Ligera transparencia en hover para mejor visibilidad */
+}
+
+
+nav {
     max-width: 1200px;
     margin: auto;
     padding: 2rem 1rem;
@@ -32,65 +84,65 @@ nav{
     gap: 2rem;
 }
 
-.nav-logo{
+.nav-logo {
     max-width: 100px;
 }
 
-.nav-links{
+.nav-links {
     list-style: none;
     display: flex;
     align-items: center;
     gap: 3rem;
 }
 
-.link a{
+.link a {
     position: relative;
     padding-bottom: 0.75rem;
-    color: #fff;
+    color: #4A4A4A;
 }
 
-.link a::after{
+.link a::after {
     content: "";
     position: absolute;
     height: 2px;
     width: 0;
     bottom: 0;
     left: 0;
-    background-color: #5483B3;
+    background-color: #B4915D;
     transition: all 0.3s ease;
 }
 
-.link a:hover::after{
+.link a:hover::after {
     width: 70%;
 }
 
-.btn{
+.btn {
     padding: 1rem 2rem;
     font-size: 1rem;
-    color: #fff;
-    background-color: #5483B3;
+    color: #333;
+    background-color: #B4915D;
     border-radius: 5px;
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
-.btn:hover{
-    background-color: #5483B3;
+.btn:hover {
+    background-color: #D36D4F;
 }
 
-.container{
+.container {
     max-width: 1200px;
     margin: auto;
     padding: 5rem 2rem;
 }
 
-.blur{
+.blur {
     position: absolute;
-    box-shadow: 0 0 1000px 50px #5483B3;
+    box-shadow: 0 0 1000px 50px #B4915D;
     z-index: -100;
 }
 
-header{
+header {
     position: relative;
     padding-top: 2rem;
     display: grid;
@@ -99,36 +151,35 @@ header{
     gap: 2rem;
 }
 
-header .content h4{
+header .content h4 {
     margin-bottom: 1rem;
-    color: #ccc;
+    color: #7D7D7D;
     font-size: 1rem;
     font-weight: 600;
 }
 
-header .content h1{
-    color: #fff;
+header .content h1 {
+    color: #4A4A4A;
     margin-bottom: 1rem;
     font-size: 3rem;
     font-weight: 700;
     line-height: 4rem;
 }
 
-header .content h1 span{
-    -webkit-text-fill-color: transparent;
-    -webkit-text-stroke: 1px #fff;
+header .content h1 span {
+    color: #B4915D;
 }
 
-header .content p{
+header .content p {
     margin-bottom: 2rem;
-    color: #ccc;
+    color: #7D7D7D;
 }
 
-header .image{
+header .image {
     position: relative;
 }
 
-header .image::before{
+header .image::before {
     content: "o";
     position: absolute;
     top: 0;
@@ -137,47 +188,49 @@ header .image::before{
     font-size: 38rem;
     font-weight: 400;
     line-height: 20rem;
-    color: #1d4ed8;
+    color: #D9B78F;
     opacity: 0.2;
     z-index: -100;
 }
 
-header .image img{
+header .image img {
     max-width: 600px;
     margin: auto;
 }
 
-section .header{
+section .header {
     margin-bottom: 1rem;
-    color: #fff;
+    color: #4A4A4A;
     text-align: center;
     font-size: 2.25rem;
     font-weight: 600;
 }
 
-.features{
+.features {
     margin-top: 4rem;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
 }
 
-.features .card{
-    background-color: #728495;
+.features .card {
+    background-color: #D9B78F;
     padding: 1rem;
     border: 2px solid transparent;
     border-radius: 15px;
     transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.features .card:hover{
-    background-color: #323232;
-    border-color: #fff;
+.features .card:hover {
+    background-color: #F5E7D6;
+    border-color: #B4915D;
+    transform: translateY(-5px);
 }
 
-.features .card span{
+.features .card span {
     display: inline-block;
-    background-color: #5483B3;
+    background-color: #B4915D;
     padding: 2px 9px;
     margin-bottom: 1rem;
     font-size: 1.75rem;
@@ -185,27 +238,27 @@ section .header{
     border-radius: 5px;
 }
 
-.features .card h4{
+.features .card h4 {
     margin-bottom: 0.5rem;
-    color: #fff;
+    color: #4A4A4A;
     font-size: 1.2rem;
     font-weight: 600;
 }
 
-.features .card p{
-    color: #ccc;
+.features .card p {
+    color: #7D7D7D;
     margin-bottom: 1rem;
 }
 
-.features .card a{
-    color: #fff;
+.features .card a {
+    color: #4A4A4A;
     transition: all 0.3s ease;
 }
 
-.features .card a:hover{
-    color: #5483B3;
+.features .card a:hover {
+    color: #B4915D;
 }
-/* Estilos para el submenú */
+
 .menu-item {
     position: relative;
 }
@@ -213,20 +266,20 @@ section .header{
 .submenu {
     display: none;
     position: absolute;
-    top: 100%; /* Coloca el submenú justo debajo del elemento principal */
+    top: 100%;
     left: 0;
-    background-color: #5483B3; /* Color de fondo para el submenú */
+    background-color: #B4915D;
     padding: 0;
     list-style: none;
     margin: 0;
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-10px); /* Para animar desde arriba */
+    transform: translateY(-10px);
     transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
 }
 
 .menu-item.show .submenu {
-    display: block; /* Asegúrate de que el menú sea accesible para la animación */
+    display: block;
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
@@ -237,188 +290,190 @@ section .header{
 }
 
 .submenu .btn {
-    padding: 0.5rem 1rem; /* Ajusta el padding si es necesario */
-    background-color: #5483B3; /* Mismo color de fondo que el botón principal */
+    padding: 0.5rem 1rem;
+    background-color: #B4915D;
     width: 100%;
-    text-align: left; /* Alinea el texto a la izquierda */
+    text-align: left;
 }
 
 .submenu .btn a {
     color: #fff;
 }
 
-.sub-header{
+.sub-header {
     max-width: 600px;
     margin: auto;
     text-align: center;
-    color: #ccc;
+    color: #7D7D7D;
 }
 
-.pricing{
+.pricing {
     margin-top: 4rem;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
 }
 
-.pricing .card{
+.pricing .card {
     padding: 3rem 2rem;
-    background-color: #27272a;
+    background-color: #EFE9E5;
     display: flex;
     flex-direction: column;
     border: 2px solid transparent;
     border-radius: 15px;
     transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.pricing .card:hover{
-    background-color: #323232;
-    border-color: #fff;
+.pricing .card:hover {
+    background-color: #F5E7D6;
+    border-color: #B4915D;
+    transform: translateY(-5px);
 }
 
-.pricing .card .content{
+.pricing .card .content {
     flex: 1;
     margin-bottom: 2rem;
 }
 
-.pricing .card h4{
+.pricing .card h4 {
     margin-bottom: 1rem;
-    color: #fff;
+    color: #4A4A4A;
     font-size: 1.2rem;
     font-weight: 500;
 }
 
-.pricing .card h3{
-    color: #fff;
+.pricing .card h3 {
+    color: #4A4A4A;
     padding-bottom: 1rem;
     margin-bottom: 2rem;
     font-size: 2rem;
     font-weight: 600;
-    border-bottom: 2px dashed #fff;
+    border-bottom: 2px dashed #4A4A4A;
 }
 
-.pricing .card p{
-    color: #fff;
+.pricing .card p {
+    color: #4A4A4A;
     margin-bottom: 0.75rem;
 }
 
-.pricing .card p i{
-    color: #ccc;
+.pricing .card p i {
+    color: #7D7D7D;
     font-size: 1.2rem;
     margin-right: 0.3rem;
 }
 
-.pricing .card button{
+.pricing .card button {
     color: #fff;
     background-color: transparent;
-    border: 2px solid #fff;
+    border: 2px solid #4A4A4A;
 }
 
-.pricing .card button:hover{
-    background-color: #1e40af;
-    border-color: #1e40af;
+.pricing .card button:hover {
+    background-color: #B4915D;
+    border-color: #B4915D;
 }
 
-footer{
+footer {
     position: relative;
     display: grid;
     grid-template-columns: 400px repeat(3, 1fr);
     gap: 2rem;
 }
 
-footer .column .logo{
+footer .column .logo {
     max-width: 100px;
     margin-bottom: 2rem;
 }
 
-footer .column p{
-    color: #ccc;
+footer .column p {
+    color: #7D7D7D;
     margin-bottom: 2rem;
 }
 
-footer .column .socials{
+footer .column .socials {
     display: flex;
     align-items: center;
     gap: 1rem;
 }
 
-footer .column .socials a{
-    color: #ccc;
-    border: 1px solid #ccc;
+footer .column .socials a {
+    color: #7D7D7D;
+    border: 1px solid #7D7D7D;
     padding: 5px 10px;
     font-size: 1.25rem;
     border-radius: 100%;
     transition: all 0.3s ease;
 }
 
-footer .column .socials a:hover{
+footer .column .socials a:hover {
     color: #fff;
-    background-color: #5483B3;
-    border-color: #5483B3;
+    background-color: #B4915D;
+    border-color: #B4915D;
 }
 
-footer .column h4{
-    color: #fff;
+footer .column h4 {
+    color: #4A4A4A;
     margin-bottom: 2rem;
     font-size: 1.2rem;
     font-weight: 500;
 }
 
-footer .column > a{
+footer .column > a {
     display: block;
-    color: #ccc;
+    color: #7D7D7D;
     margin-bottom: 1rem;
     transition: all 0.3s ease;
 }
 
-footer .column > a:hover{
-    color: #5483B3;
+footer .column > a:hover {
+    color: #B4915D;
 }
 
-.copyright{
+.copyright {
     max-width: 1200px;
     margin: auto;
     padding: 1rem;
-    color: #fff;
+    color: #4A4A4A;
     font-size: 0.8rem;
     text-align: center;
 }
 
-@media (width < 900px){
-    .nav-links{
+@media (max-width: 900px) {
+    .nav-links {
         display: none;
     }
-    header{
-        grid-template-columns: repeat(1, 1fr);
+    header {
+        grid-template-columns: 1fr;
     }
-    header .image{
+    header .image {
         grid-area: 1/1/2/2;
     }
-    .features{
+    .features {
         grid-template-columns: repeat(2, 1fr);
     }
-    .pricing{
+    .pricing {
         grid-template-columns: repeat(2, 1fr);
     }
-    footer{
+    footer {
         grid-template-columns: 1fr 200px;
     }
 }
 
-@media (width < 600px){
-    header .image::before{
+@media (max-width: 600px) {
+    header .image::before {
         display: none;
     }
 
-    .features{
-        grid-template-columns: repeat(1, 1fr);
+    .features {
+        grid-template-columns: 1fr;
     }
 
-    .pricing{
-        grid-template-columns: repeat(1, 1fr);
+    .pricing {
+        grid-template-columns: 1fr;
     }
 
-    footer{
+    footer {
         grid-template-columns: 1fr 150px;
     }
 }
