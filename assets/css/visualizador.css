@@ -1,0 +1,259 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    outline: none;
+    border: none;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #EFE9E5; /* Color de fondo para el modo día */
+    color: #000000; /* Color del texto para el modo día */
+}
+
+img {
+    max-width: 10%;
+    height: auto;
+    -ms-interpolation-mode: bicubic;
+    display: inline-block;
+    vertical-align: middle;
+}
+/* Paleta de colores */
+.primary-bg {
+    background-color: #EFE9E5; /* Fondo claro */
+}
+
+.secondary-bg {
+    background-color: #4A5B6A; /* Fondo oscuro para el modo noche */
+}
+
+.primary-text {
+    color: #333; /* Texto oscuro */
+}
+
+.secondary-text {
+    color: #e6e6e6; /* Texto claro */
+}
+
+.btn {
+    background-color: #B4915D; /* Color de fondo de los botones */
+    color: #fff; /* Color del texto de los botones */
+    border-radius: 5px;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #D36D4F; /* Color de fondo al pasar el ratón */
+}
+
+nav {
+    max-width: 1200px;
+    margin: auto;
+    padding: 2rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    background-color: #EFE9E5; /* Fondo claro para el modo día */
+}
+
+.nav-logo h1 {
+    color: #4A4A4A; /* Color del texto del logo */
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+
+.link a {
+    position: relative;
+    padding-bottom: 0.75rem;
+    color: #4A4A4A;
+}
+
+.link a::after {
+    content: "";
+    position: absolute;
+    height: 2px;
+    width: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #B4915D;
+    transition: all 0.3s ease;
+}
+
+.link a:hover::after {
+    width: 70%;
+}
+
+/* Modo Noche */
+.night-mode {
+    background-color: #4A5B6A; /* Fondo oscuro */
+    color: #e6e6e6; /* Texto claro */
+}
+
+.night-mode .btn {
+    background-color: #B4915D; /* Color de fondo de los botones en modo noche */
+    color: #fff; /* Color del texto de los botones en modo noche */
+}
+
+.night-mode nav {
+    background-color: #4A5B6A; /* Fondo oscuro para el menú en modo noche */
+}
+
+.night-mode .nav-logo h1 {
+    color: #e6e6e6; /* Color del texto del logo en modo noche */
+}
+
+.night-mode .link a {
+    color: #e6e6e6; /* Color de los enlaces en modo noche */
+}
+
+.night-mode .link a::after {
+    background-color: #e6e6e6; /* Línea inferior de enlaces en modo noche */
+}
+
+.night-mode #pdf-container canvas {
+    border-color: #D36D4F; /* Borde alrededor del canvas en modo noche */
+}
+
+.night-mode #navigation-controls .btn {
+    background-color: #D36D4F; /* Color de fondo de los botones de navegación en modo noche */
+    color: #fff; /* Color del texto de los botones en modo noche */
+}
+
+.night-mode #navigation-controls span {
+    color: #e6e6e6; /* Color del texto de navegación en modo noche */
+}
+
+/* Estilos específicos para el visor de PDF */
+#upload-container {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+#upload-container h2 {
+    color: #4A4A4A; /* Color del título */
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+#upload-form input[type="file"] {
+    margin-bottom: 1rem;
+}
+
+#pdf-container {
+    text-align: center;
+}
+
+#pdf-container canvas {
+    border: 1px solid #B4915D; /* Borde alrededor del canvas */
+}
+
+#navigation-controls {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+#navigation-controls .btn {
+    background-color: #B4915D; /* Color de fondo de los botones de navegación */
+    color: #fff; /* Color del texto de los botones */
+    padding: 0.5rem 1rem;
+    border: none;
+    font-size: 1rem;
+}
+
+#navigation-controls .btn:hover {
+    background-color: #D36D4F; /* Color de fondo al pasar el ratón */
+}
+
+#navigation-controls span {
+    display: flex;
+    align-items: center;
+    color: #4A4A4A; /* Color del texto de navegación */
+    font-size: 1rem;
+}
+
+/* Estilos del menú de navegación */
+nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    background-color: #EFE9E5; /* Fondo claro */
+}
+
+.nav-logo h1 {
+    margin: 0;
+    color: #4A4A4A; /* Color del texto del logo */
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-links .link a {
+    color: #4A4A4A; /* Color del texto del enlace */
+    font-weight: 500;
+}
+
+.nav-links .link a:hover {
+    color: #B4915D; /* Color del texto del enlace al pasar el ratón */
+}
+
+/* Estilos para los botones de menú */
+.menu-item {
+    position: relative;
+}
+
+.submenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    display: none;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.menu-item:hover .submenu {
+    display: flex;
+}
+
+.submenu .btn {
+    padding: 0.5rem 1rem;
+    background-color: #B4915D; /* Color de fondo del botón en el menú desplegable */
+    color: #fff; /* Color del texto del botón en el menú desplegable */
+}
+
+.submenu .btn:hover {
+    background-color: #D36D4F; /* Color de fondo del botón en el menú desplegable al pasar el ratón */
+}
+
+/* Botón de modo oscuro */
+#mode-toggle {
+    background-color: #B4915D; /* Color de fondo del botón de modo oscuro */
+    color: #fff; /* Color del texto del botón de modo oscuro */
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#mode-toggle:hover {
+    background-color: #D36D4F; /* Color de fondo al pasar el ratón */
+}
